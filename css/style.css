@@ -26,9 +26,9 @@
 	max-width: 600px;
 	opacity:0.8;
 	background-color: #333;
-	padding: 10px 30px 10px;
 	margin: 10px 10px;
 	float: right;
+	color: white;
 	
 	box-shadow: 0px 0px 5px 5px #212;
 	-webkit-box-shadow: 0px 0px 5px 5px #212;
@@ -47,27 +47,24 @@ h1, h2, h3 {
 	opacity:1;
 }
 
-h2, h3 {
-	background: #444;
-	border-width: 0px 0px 1px;
-	border-color: #fff;
-	border-style: double;
-	border-color: #999;
+h2 {
+	margin-left: -15px;
 }
 
 body {
-	font-family:"Droid Serif";
 	margin: 0px;
 	background: url(../images/back-ground.jpg) center fixed no-repeat;
 	background-size: cover;
-	
-	color: white;
-}
-
-p {
-	text-indent: 1em;
 }
 
 li {
 	margin: 10px auto;
+}
+
+.my-card {
+	background: inherit;
+}
+.my-card > .card-body{
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
