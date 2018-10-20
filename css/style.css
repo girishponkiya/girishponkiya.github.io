@@ -25,10 +25,8 @@
 .main {
 	max-width: 600px;
 	opacity:0.8;
-	background-color: #333;
 	margin: 10px 10px;
 	float: right;
-	color: white;
 	
 	box-shadow: 0px 0px 5px 5px #212;
 	-webkit-box-shadow: 0px 0px 5px 5px #212;
@@ -47,10 +45,6 @@ h1, h2, h3 {
 	opacity:1;
 }
 
-h2 {
-	margin-left: -15px;
-}
-
 body {
 	margin: 0px;
 	background: url(../images/back-ground.jpg) center fixed no-repeat;
@@ -66,5 +60,5 @@ li {
 }
 .my-card > .card-body{
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 }
