@@ -63,6 +63,6 @@ li {
 }
 .my-card > .card-body{
 	padding-top: 10px;
-	padding-bottom: 0px;
+	padding-bottom: 6px;
 	border-radius: 0.5rem;
 }
