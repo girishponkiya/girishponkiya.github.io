@@ -66,3 +66,8 @@ li {
 	padding-bottom: 6px;
 	border-radius: 0.5rem;
 }
+
+.icon {
+	width: 32px;
+	height: 32px;
+}
