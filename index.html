@@ -57,11 +57,14 @@
 					<a href="https://stackoverflow.com/users/1726226" target="_blank">
 						<i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
 					&nbsp;
+					<a href="https://scholar.google.com/citations?user=girishponkiya" target="_blank">
+						<i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
+					&nbsp;
 					<a href="CV.pdf" target="_blank">
 						<i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 					</h6>
 				<br style="clear:both;"/><br/>
-				Data Scientist (AVP), ISS STOXX<br/>
+				Data Scientist (VP), ISS STOXX<br/>
 				PhD (NLP), <a href="http://www.iitb.ac.in" style="font-style: normal;">Indian Institute of Technology Bombay</a>.
 			</div>
 		</div>
@@ -69,8 +72,17 @@
 			<div class="card my-card">
 				<div class="card-body">
 					<h3 id="research" class="card-title">About</h3>
-					<p>I have a Ph.D. in NLP from IIT Bombay and work as a Data Scientist (Assistant VP) at Institutional Shareholder Services. My research focuses on using NLP for financial data collection, especially monitoring ESG controversies.</p>
+					<p>I have a Ph.D. in NLP from IIT Bombay and work as a Data Scientist (VP) at Institutional Shareholder Services. My research focuses on using NLP for financial data collection, especially monitoring ESG controversies.</p>
+					<p>My doctoral thesis, <em>Noun Compound Interpretation</em>, tackled automatically uncovering implicit semantic relationships within noun compounds (e.g., that <em>student protest</em> implies a student is the doer). I explored two approaches: paraphrasing — using supervised LSTM-based models trained via distant supervision for prepositional paraphrasing, and unsupervised BERT/T5-based models for both prepositional and free paraphrasing — and abstract labeling using Frame Semantics (FrameNet).</p>
 					<p>I am passionate about data structures, algorithms, machine learning, and formal verification. I aim to connect research with real-world applications in language processing technologies.</p>
+				</div>
+			</div>
+
+			<div class="card my-card">
+				<div class="card-body">
+					<h3 id="skills" class="card-title">Skills</h3>
+					<p><strong>Research:</strong> Natural Language Processing, Information Extraction, Semantic Parsing, Large Language Models, ESG Data</p>
+					<p><strong>Tools &amp; Frameworks:</strong> Python, PyTorch, HuggingFace Transformers, spaCy, vLLM, Grafana</p>
 				</div>
 			</div>
 
@@ -89,25 +101,38 @@
 							in Findings of <b>ACL-IJCNLP 2021</b>, August, 2021.</li>
 
 						<li>Girishkumar Ponkiya, Rudra Murthy, Pushpak Bhattacharyya and Girish Palshikar,
-							<a href="https://www.cse.iitb.ac.in/~girishp/papers/emnlp20-unsupervised.pdf">
+							<a href="https://aclanthology.org/2020.findings-emnlp.386" target="_blank">
 								Looking inside Noun Compounds: Unsupervised Prepositional and Free Paraphrasing</a>,
-							in Findings of <b>EMNLP 2020</b>, 16-20 Movember, 2020.</li>
+							in Findings of <b>EMNLP 2020</b>, November, 2020.</li>
 
 						<li>Girishkumar Ponkiya, Kevin Patel, Pushpak Bhattacharyya and Girish Palshikar,
-							<a href="https://www.cse.iitb.ac.in/~girishp/papers/coling18-nc.pdf">
+							<a href="https://aclanthology.org/C18-1155" target="_blank">
 								Treat us like the sequences we are: Prepositional Paraphrasing of Noun Compounds using LSTM</a>,
 							<b>COLING 2018</b>, Santa Fe, New-Mexico, USA, August 20-26, 2018.</li>
-						
+
 						<li>Girishkumar Ponkiya, Kevin Patel, Pushpak Bhattacharyya and Girish K. Palshikar,
-							<a href="https://www.cse.iitb.ac.in/~girishp/papers/lrec18-nc-dataset.pdf">
+							<a href="https://aclanthology.org/L18-1489" target="_blank">
 								Towards a Standardized Dataset for Noun Compound Interpretation,</a>
 							<b>LREC 2018</b>, Miyazaki, Japan, May 7-12, 2018.</li>
-						
+
 						<li>Girishkumar Ponkiya, Pushpak Bhattacharyya and Girish K Palshikar,
-							<a href="https://www.cse.iitb.ac.in/~girishp/papers/icon16-noun-compound.pdf">
+							<a href="http://www.aclweb.org/anthology/W16-6336" target="_blank">
 								On Why Coarse Class Classification is Bottleneck in Noun Compound Interpretation,</a>
 							<b>ICON 2016</b>, Varanasi, India, December 17-20, 2016.</li>
 					</ol>
+				</div>
+			</div>
+
+			<div class="card my-card">
+				<div class="card-body">
+					<h3 id="opensource" class="card-title">Open Source</h3>
+					<ul>
+						<li>Released a <a href="https://github.com/iss-lab/vllm-dashboard" target="_blank">Grafana dashboard</a> to monitor vLLM using Telegraf + InfluxDB (via ISS Lab).</li>
+						<li>Contributed to <a href="https://github.com/huggingface/transformers/commits?author=girishponkiya" target="_blank">HuggingFace Transformers</a>: reported bugs (<a href="https://github.com/huggingface/transformers/issues/4121" target="_blank">#4121</a>, <a href="https://github.com/huggingface/transformers/issues/4021" target="_blank">#4021</a>), proposed T5 pipeline fix (<a href="https://github.com/huggingface/transformers/issues/3985#issuecomment-622981083" target="_blank">#3985</a>), and documentation updates.</li>
+						<li>Fixed multi-input support in <a href="https://github.com/surmenok/keras_lr_finder/pull/21" target="_blank">keras_lr_finder</a>.</li>
+						<li>Bug fixes in <a href="https://github.com/streamlit/streamlit/pull/3694" target="_blank">Streamlit</a> and <a href="https://github.com/inception-project/framenet-tools/pull/22" target="_blank">framenet-tools</a>.</li>
+						<li>Proposed Noun Compound Interpretation as a tracked NLP task in <a href="https://github.com/sebastianruder/NLP-progress/issues/217" target="_blank">NLP-progress</a>.</li>
+					</ul>
 				</div>
 			</div>
 
@@ -117,6 +142,10 @@
 					<ul>
 						<li>Ph.D (Natural Language Processing) <br />
 							<a href="http://www.iitb.ac.in/" style="font-style: normal;">Indian Institute of Technology Bombay</a>, Mumbai.
+							<ul>
+								<li>Best Poster (Technical), Research-Scholar Mela 2016, CSE Department, IIT Bombay.</li>
+								<li>First Prize, Poster Session, Research and Innovation Symposium for Computer Scientists (RISC) 2016.</li>
+							</ul>
 						<li>M.Tech (Computer Science) <br />
 							<a href="http://www.isical.ac.in/">Indian Statistical Institute</a>, Kolkata.
 						<li>B.E. (Computer Engineering) <br />
