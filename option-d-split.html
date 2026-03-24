@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Girishkumar Ponkiya — Option D: Split Hero</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    /* ── Light theme (default) ── */
+    :root, [data-theme="light"] {
+      --bg:           #ffffff;
+      --surface:      #f9fafb;
+      --border:       #e5e7eb;
+      --accent:       #6366f1;
+      --accent-dark:  #4f46e5;
+      --accent-light: #818cf8;
+      --text:         #111827;
+      --muted:        #6b7280;
+      --body-text:    #374151;
+      --tag-bg:       #ede9fe;
+      --tag-color:    #4f46e5;
+      --skill-box-bg: #f9fafb;
+      --pub-hover:    #f3f4f6;
+      --os-icon:      #6366f1;
+      --toggle-bg:    rgba(255,255,255,0.9);
+      --toggle-border:rgba(0,0,0,0.12);
+      --toggle-color: #4b5563;
+    }
+
+    /* ── Dark theme ── */
+    [data-theme="dark"] {
+      --bg:           #0f172a;
+      --surface:      #1e293b;
+      --border:       #334155;
+      --accent:       #818cf8;
+      --accent-dark:  #a5b4fc;
+      --accent-light: #c7d2fe;
+      --text:         #f1f5f9;
+      --muted:        #94a3b8;
+      --body-text:    #cbd5e1;
+      --tag-bg:       #1e1b4b;
+      --tag-color:    #a5b4fc;
+      --skill-box-bg: #1e293b;
+      --pub-hover:    #1e293b;
+      --os-icon:      #818cf8;
+      --toggle-bg:    rgba(30,41,59,0.9);
+      --toggle-border:rgba(255,255,255,0.1);
+      --toggle-color: #94a3b8;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg:           #0f172a;
+        --surface:      #1e293b;
+        --border:       #334155;
+        --accent:       #818cf8;
+        --accent-dark:  #a5b4fc;
+        --accent-light: #c7d2fe;
+        --text:         #f1f5f9;
+        --muted:        #94a3b8;
+        --body-text:    #cbd5e1;
+        --tag-bg:       #1e1b4b;
+        --tag-color:    #a5b4fc;
+        --skill-box-bg: #1e293b;
+        --pub-hover:    #1e293b;
+        --os-icon:      #818cf8;
+        --toggle-bg:    rgba(30,41,59,0.9);
+        --toggle-border:rgba(255,255,255,0.1);
+        --toggle-color: #94a3b8;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--accent-dark); }
+
+    /* Controls */
+    .controls {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 10px;
+      padding: 4px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .layout-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--toggle-color);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .layout-btn:hover { background: rgba(128,128,128,0.12); color: var(--accent); }
+    .layout-btn.active { background: var(--accent); color: #fff; }
+    .ctrl-divider { width: 1px; height: 16px; background: var(--toggle-border); margin: 0 2px; }
+    .theme-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--toggle-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .theme-toggle:hover { color: var(--accent); }
+
+    /* ── Hero (always dark photo bg, no theme switching needed here) ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    .hero-photo {
+      background: url('../images/back-ground.jpg') center / cover no-repeat;
+      position: relative;
+    }
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(79,70,229,0.3));
+    }
+
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 56px;
+      background: #0f0f23;
+      color: #fff;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent-light);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    h1 span { color: var(--accent-light); }
+
+    .hero-desc {
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 32px;
+      max-width: 360px;
+    }
+
+    .hero-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-dark); text-decoration: none; color: #fff; }
+    .btn-outline {
+      background: transparent;
+      color: #94a3b8;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      border: 1px solid #374151;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); text-decoration: none; }
+
+    .hero-socials { display: flex; gap: 18px; }
+    .hero-socials a { color: #4b5563; font-size: 1.2rem; transition: color 0.2s; }
+    .hero-socials a:hover { color: var(--accent-light); text-decoration: none; }
+
+    /* ── Content ── */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 72px 32px 80px;
+    }
+
+    section { margin-bottom: 56px; }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    p { margin-bottom: 12px; color: var(--body-text); }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .skill-box {
+      background: var(--skill-box-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .skill-box-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 12px;
+      margin: 3px 3px 3px 0;
+      font-weight: 500;
+    }
+
+    /* Publications */
+    .pub-item {
+      padding: 18px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .pub-item:hover { border-color: var(--accent); background: var(--pub-hover); }
+    .pub-num { position: absolute; top: 18px; right: 18px; font-size: 12px; color: var(--muted); font-weight: 600; }
+    .pub-title { font-weight: 600; color: var(--text); font-size: 14px; margin-bottom: 4px; }
+    .pub-title a { color: var(--text); }
+    .pub-title a:hover { color: var(--accent); text-decoration: none; }
+    .pub-authors { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .pub-badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* Open Source */
+    .os-item {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--body-text);
+    }
+    .os-item:last-child { border-bottom: none; }
+    .os-icon { color: var(--os-icon); margin-top: 3px; flex-shrink: 0; }
+
+    /* Education */
+    .edu-timeline { position: relative; padding-left: 28px; }
+    .edu-timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--border));
+    }
+    .edu-item { position: relative; margin-bottom: 28px; }
+    .edu-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .edu-degree { font-weight: 700; font-size: 15px; color: var(--text); }
+    .edu-inst { color: var(--accent); font-size: 14px; margin-top: 2px; }
+    .edu-award { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .edu-award::before { content: '🏅 '; }
+
+    footer {
+      text-align: center;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { height: 50vh; }
+      .hero-info { padding: 48px 32px; }
+      h1 { font-size: 1.8rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls" role="toolbar">
+    <button class="layout-btn" data-layout="a" title="Terminal">A</button>
+    <button class="layout-btn" data-layout="b" title="Academic">B</button>
+    <button class="layout-btn" data-layout="c" title="Glass">C</button>
+    <button class="layout-btn" data-layout="d" title="Split">D</button>
+    <button class="layout-btn" data-layout="e" title="Sidebar Glass">E</button>
+    <button class="layout-btn" data-layout="f" title="Split Glass">F</button>
+    <div class="ctrl-divider"></div>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+
+  <!-- Hero (always dark) -->
+  <section class="hero">
+    <div class="hero-photo"></div>
+    <div class="hero-info">
+      <div class="hero-eyebrow">Personal Profile</div>
+      <h1>Girishkumar<br><span>Ponkiya</span></h1>
+      <p class="hero-desc">Data Scientist (VP) at ISS STOXX · PhD in NLP from IIT Bombay · Building language technologies for financial intelligence.</p>
+      <div class="hero-links">
+        <a href="../CV.pdf" class="btn-primary" target="_blank"><i class="fa-regular fa-file-pdf"></i> Download CV</a>
+        <a href="https://scholar.google.com/citations?user=girishponkiya" class="btn-outline" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/girishponkiya" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/girishponkiya/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://stackoverflow.com/users/1726226" target="_blank" title="Stack Overflow"><i class="fa-brands fa-stack-overflow"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Themed content -->
+  <div class="content">
+    <section>
+      <div class="section-label">Background</div>
+      <h2>About Me</h2>
+      <p>I have a Ph.D. in NLP from IIT Bombay and work as a Data Scientist (VP) at Institutional Shareholder Services. My research focuses on using NLP for financial data collection, especially monitoring ESG controversies.</p>
+      <p>My doctoral thesis, <em>Noun Compound Interpretation</em>, tackled automatically uncovering implicit semantic relationships within noun compounds. I explored supervised LSTM-based models (via distant supervision) for prepositional paraphrasing, and unsupervised BERT/T5-based models for both prepositional and free paraphrasing, as well as abstract labeling using Frame Semantics (FrameNet).</p>
+      <p>I am passionate about data structures, algorithms, machine learning, and formal verification. I aim to connect research with real-world applications in language processing technologies.</p>
+    </section>
+
+    <section>
+      <div class="section-label">Expertise</div>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-box">
+          <div class="skill-box-label">Research</div>
+          <span class="tag">NLP</span><span class="tag">Information Extraction</span><span class="tag">Semantic Parsing</span><span class="tag">LLMs</span><span class="tag">ESG Data</span>
+        </div>
+        <div class="skill-box">
+          <div class="skill-box-label">Tools &amp; Frameworks</div>
+          <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">HuggingFace Transformers</span><span class="tag">spaCy</span><span class="tag">vLLM</span><span class="tag">Grafana</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">Research Output</div>
+      <h2>Publications</h2>
+      <div class="pub-item">
+        <div class="pub-num">01</div>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2111.13972" target="_blank">Tapping BERT for Preposition Sense Disambiguation</a></div>
+        <div class="pub-authors">Pawar, Thombre, Mittal, Ponkiya, Bhattacharyya</div>
+        <span class="pub-badge">arXiv 2021</span>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">02</div>
+        <div class="pub-title"><a href="https://aclanthology.org/2021.findings-acl.256" target="_blank">FrameNet-assisted Noun Compound Interpretation</a></div>
+        <div class="pub-authors">Ponkiya, Kanojia, Bhattacharyya, Palshikar</div>
+        <span class="pub-badge">ACL-IJCNLP 2021</span>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">03</div>
+        <div class="pub-title"><a href="https://aclanthology.org/2020.findings-emnlp.386" target="_blank">Looking inside Noun Compounds: Unsupervised Prepositional and Free Paraphrasing</a></div>
+        <div class="pub-authors">Ponkiya, Murthy, Bhattacharyya, Palshikar</div>
+        <span class="pub-badge">EMNLP 2020</span>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">04</div>
+        <div class="pub-title"><a href="https://aclanthology.org/C18-1155" target="_blank">Treat us like the sequences we are: Prepositional Paraphrasing of Noun Compounds using LSTM</a></div>
+        <div class="pub-authors">Ponkiya, Patel, Bhattacharyya, Palshikar</div>
+        <span class="pub-badge">COLING 2018</span>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">05</div>
+        <div class="pub-title"><a href="https://aclanthology.org/L18-1489" target="_blank">Towards a Standardized Dataset for Noun Compound Interpretation</a></div>
+        <div class="pub-authors">Ponkiya, Patel, Bhattacharyya, Palshikar</div>
+        <span class="pub-badge">LREC 2018</span>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">06</div>
+        <div class="pub-title"><a href="http://www.aclweb.org/anthology/W16-6336" target="_blank">On Why Coarse Class Classification is Bottleneck in Noun Compound Interpretation</a></div>
+        <div class="pub-authors">Ponkiya, Bhattacharyya, Palshikar</div>
+        <span class="pub-badge">ICON 2016</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">Community</div>
+      <h2>Open Source</h2>
+      <div class="os-item"><i class="fa-brands fa-github os-icon"></i><span>Released a <a href="https://github.com/iss-lab/vllm-dashboard" target="_blank">Grafana dashboard</a> for monitoring vLLM using Telegraf + InfluxDB (via ISS Lab).</span></div>
+      <div class="os-item"><i class="fa-brands fa-github os-icon"></i><span>Contributed to <a href="https://github.com/huggingface/transformers" target="_blank">HuggingFace Transformers</a>: bug reports (#4121, #4021), T5 pipeline fix (#3985), docs.</span></div>
+      <div class="os-item"><i class="fa-brands fa-github os-icon"></i><span>Fixed multi-input support in <a href="https://github.com/surmenok/keras_lr_finder/pull/21" target="_blank">keras_lr_finder</a>.</span></div>
+      <div class="os-item"><i class="fa-brands fa-github os-icon"></i><span>Bug fixes in <a href="https://github.com/streamlit/streamlit/pull/3694" target="_blank">Streamlit</a> and <a href="https://github.com/inception-project/framenet-tools/pull/22" target="_blank">framenet-tools</a>.</span></div>
+      <div class="os-item"><i class="fa-brands fa-github os-icon"></i><span>Proposed Noun Compound Interpretation as a tracked NLP task in <a href="https://github.com/sebastianruder/NLP-progress/issues/217" target="_blank">NLP-progress</a>.</span></div>
+    </section>
+
+    <section>
+      <div class="section-label">Academic Background</div>
+      <h2>Education</h2>
+      <div class="edu-timeline">
+        <div class="edu-item">
+          <div class="edu-degree">Ph.D — Natural Language Processing</div>
+          <div class="edu-inst"><a href="http://www.iitb.ac.in/" target="_blank">Indian Institute of Technology Bombay</a>, Mumbai</div>
+          <div class="edu-award">Best Poster (Technical), Research-Scholar Mela 2016, CSE Dept.</div>
+          <div class="edu-award">First Prize, Poster Session, RISC 2016.</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">M.Tech — Computer Science</div>
+          <div class="edu-inst"><a href="http://www.isical.ac.in/" target="_blank">Indian Statistical Institute</a>, Kolkata</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">B.E. — Computer Engineering</div>
+          <div class="edu-inst"><a href="http://www.saurashtrauniversity.edu/" target="_blank">Saurashtra University</a>, Rajkot</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>&copy; 2025 Girishkumar Ponkiya</footer>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const btn  = document.getElementById('theme-toggle');
+    const icon = btn.querySelector('i');
+    const DARK = 'dark', LIGHT = 'light';
+    const CURRENT_LAYOUT = 'd';
+    const LAYOUTS = {
+      a: 'option-a-terminal.html',
+      b: 'option-b-academic.html',
+      c: 'option-c-glass.html',
+      d: 'option-d-split.html',
+      e: 'option-e-sidebar-glass.html',
+      f: 'option-f-split-glass.html',
+    };
+
+    document.querySelectorAll('.layout-btn').forEach(lb => {
+      if (lb.dataset.layout === CURRENT_LAYOUT) lb.classList.add('active');
+      lb.addEventListener('click', () => {
+        if (lb.dataset.layout === CURRENT_LAYOUT) return;
+        localStorage.setItem('layout', lb.dataset.layout);
+        window.location.href = LAYOUTS[lb.dataset.layout];
+      });
+    });
+
+    function systemTheme() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK : LIGHT;
+    }
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      icon.className = theme === DARK ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      btn.title = theme === DARK ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+
+    applyTheme(localStorage.getItem('theme') || systemTheme());
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) applyTheme(e.matches ? DARK : LIGHT);
+    });
+
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === DARK ? LIGHT : DARK;
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+  </script>
+</body>
+</html>

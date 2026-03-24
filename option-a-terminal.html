@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Girishkumar Ponkiya — Option A: Terminal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    /* ── Dark theme (default) ── */
+    :root, [data-theme="dark"] {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --border:    #30363d;
+      --accent:    #39d353;
+      --accent2:   #58a6ff;
+      --text:      #c9d1d9;
+      --muted:     #8b949e;
+      --heading:   #ffffff;
+      --tag-bg:    #161b22;
+      --tag-border:#30363d;
+      --tag-text:  #c9d1d9;
+      --edu-bg:    #161b22;
+      --toggle-bg: #21262d;
+      --toggle-border: #30363d;
+      --toggle-color: #c9d1d9;
+    }
+
+    /* ── Light theme ── */
+    [data-theme="light"] {
+      --bg:        #f6f8fa;
+      --surface:   #ffffff;
+      --border:    #d0d7de;
+      --accent:    #1a7f37;
+      --accent2:   #0969da;
+      --text:      #24292f;
+      --muted:     #57606a;
+      --heading:   #24292f;
+      --tag-bg:    #eafaea;
+      --tag-border:#acd8b0;
+      --tag-text:  #1a7f37;
+      --edu-bg:    #ffffff;
+      --toggle-bg: #ffffff;
+      --toggle-border: #d0d7de;
+      --toggle-color: #24292f;
+    }
+
+    /* ── System fallback ── */
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg:        #f6f8fa;
+        --surface:   #ffffff;
+        --border:    #d0d7de;
+        --accent:    #1a7f37;
+        --accent2:   #0969da;
+        --text:      #24292f;
+        --muted:     #57606a;
+        --heading:   #24292f;
+        --tag-bg:    #eafaea;
+        --tag-border:#acd8b0;
+        --tag-text:  #1a7f37;
+        --edu-bg:    #ffffff;
+        --toggle-bg: #ffffff;
+        --toggle-border: #d0d7de;
+        --toggle-color: #24292f;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { color: var(--accent); text-decoration: underline; }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* Controls */
+    .controls {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 8px;
+      padding: 4px;
+    }
+    .layout-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 5px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .layout-btn:hover { background: rgba(57,211,83,0.12); color: var(--accent); }
+    .layout-btn.active { background: var(--accent); color: var(--bg); }
+    .ctrl-divider { width: 1px; height: 16px; background: var(--border); margin: 0 2px; }
+    .theme-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 5px;
+      border: none;
+      background: transparent;
+      color: var(--toggle-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .theme-toggle:hover { color: var(--accent); }
+
+    /* Header */
+    .header {
+      margin-bottom: 48px;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+    .prompt { color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+    .prompt span { color: var(--accent); }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--heading);
+      letter-spacing: -0.5px;
+    }
+    h1 .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.8rem;
+      background: var(--accent);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .tagline { color: var(--muted); margin-top: 6px; font-size: 13px; }
+    .tagline strong { color: var(--text); }
+
+    .links { margin-top: 14px; display: flex; gap: 20px; flex-wrap: wrap; }
+    .links a {
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* Sections */
+    section { margin-bottom: 40px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-header::before { content: '#'; color: var(--accent); font-size: 1.1rem; font-weight: bold; }
+    .section-header h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    p { margin-bottom: 10px; color: var(--text); }
+
+    /* Skills */
+    .skill-row { margin-bottom: 8px; display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+    .skill-label {
+      color: var(--muted);
+      min-width: 160px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .skill-label::after { content: ':'; }
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--tag-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    /* Publications */
+    ol { padding-left: 0; list-style: none; counter-reset: pub; }
+    ol li {
+      counter-increment: pub;
+      margin-bottom: 14px;
+      padding-left: 28px;
+      position: relative;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    ol li::before {
+      content: '[' counter(pub) ']';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    ol li a { color: var(--text); }
+    ol li a:hover { color: var(--accent); }
+    .venue { color: var(--accent2); }
+
+    /* Open Source */
+    ul.os { list-style: none; padding: 0; }
+    ul.os li {
+      padding: 8px 0 8px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      position: relative;
+    }
+    ul.os li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+    ul.os li:last-child { border-bottom: none; }
+
+    /* Education */
+    .edu-item {
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      background: var(--edu-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .edu-degree { color: var(--heading); font-weight: bold; font-size: 13px; }
+    .edu-inst { color: var(--accent2); font-size: 13px; }
+    .edu-award { color: var(--accent); font-size: 12px; margin-top: 4px; }
+    .edu-award::before { content: '★ '; }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls" role="toolbar">
+    <button class="layout-btn" data-layout="a" title="Terminal">A</button>
+    <button class="layout-btn" data-layout="b" title="Academic">B</button>
+    <button class="layout-btn" data-layout="c" title="Glass">C</button>
+    <button class="layout-btn" data-layout="d" title="Split">D</button>
+    <button class="layout-btn" data-layout="e" title="Sidebar Glass">E</button>
+    <button class="layout-btn" data-layout="f" title="Split Glass">F</button>
+    <div class="ctrl-divider"></div>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+
+  <div class="container">
+    <header class="header">
+      <div class="prompt"><span>girishp</span>@profile:~$</div>
+      <h1>Girishkumar Ponkiya<span class="cursor"></span></h1>
+      <p class="tagline"><strong>Data Scientist (VP)</strong>, ISS STOXX &nbsp;·&nbsp; PhD (NLP), IIT Bombay</p>
+      <div class="links">
+        <a href="https://github.com/girishponkiya" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/girishponkiya/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://stackoverflow.com/users/1726226" target="_blank"><i class="fa-brands fa-stack-overflow"></i> Stack Overflow</a>
+        <a href="https://scholar.google.com/citations?user=girishponkiya" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+        <a href="../CV.pdf" target="_blank"><i class="fa-regular fa-file-pdf"></i> CV</a>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-header"><h2>About</h2></div>
+      <p>I have a Ph.D. in NLP from IIT Bombay and work as a Data Scientist (VP) at Institutional Shareholder Services. My research focuses on using NLP for financial data collection, especially monitoring ESG controversies.</p>
+      <p>My doctoral thesis, <em>Noun Compound Interpretation</em>, tackled automatically uncovering implicit semantic relationships within noun compounds. I explored supervised LSTM-based models (via distant supervision) for prepositional paraphrasing, and unsupervised BERT/T5-based models for both prepositional and free paraphrasing, as well as abstract labeling using Frame Semantics (FrameNet).</p>
+    </section>
+
+    <section>
+      <div class="section-header"><h2>Skills</h2></div>
+      <div class="skill-row">
+        <span class="skill-label">Research</span>
+        <span class="tag">NLP</span><span class="tag">Information Extraction</span><span class="tag">Semantic Parsing</span><span class="tag">LLMs</span><span class="tag">ESG Data</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Tools &amp; Frameworks</span>
+        <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">HuggingFace Transformers</span><span class="tag">spaCy</span><span class="tag">vLLM</span><span class="tag">Grafana</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header"><h2>Publications</h2></div>
+      <ol>
+        <li>Pawar et al., <a href="https://arxiv.org/abs/2111.13972" target="_blank">Tapping BERT for Preposition Sense Disambiguation</a>, <span class="venue">arXiv</span>, 2021.</li>
+        <li>Ponkiya et al., <a href="https://aclanthology.org/2021.findings-acl.256" target="_blank">FrameNet-assisted Noun Compound Interpretation</a>, <span class="venue">Findings of ACL-IJCNLP 2021</span>.</li>
+        <li>Ponkiya et al., <a href="https://aclanthology.org/2020.findings-emnlp.386" target="_blank">Looking inside Noun Compounds: Unsupervised Prepositional and Free Paraphrasing</a>, <span class="venue">Findings of EMNLP 2020</span>.</li>
+        <li>Ponkiya et al., <a href="https://aclanthology.org/C18-1155" target="_blank">Treat us like the sequences we are: Prepositional Paraphrasing of Noun Compounds using LSTM</a>, <span class="venue">COLING 2018</span>.</li>
+        <li>Ponkiya et al., <a href="https://aclanthology.org/L18-1489" target="_blank">Towards a Standardized Dataset for Noun Compound Interpretation</a>, <span class="venue">LREC 2018</span>.</li>
+        <li>Ponkiya et al., <a href="http://www.aclweb.org/anthology/W16-6336" target="_blank">On Why Coarse Class Classification is Bottleneck in Noun Compound Interpretation</a>, <span class="venue">ICON 2016</span>.</li>
+      </ol>
+    </section>
+
+    <section>
+      <div class="section-header"><h2>Open Source</h2></div>
+      <ul class="os">
+        <li>Released a <a href="https://github.com/iss-lab/vllm-dashboard" target="_blank">Grafana dashboard</a> for monitoring vLLM using Telegraf + InfluxDB (via ISS Lab).</li>
+        <li>Contributed to <a href="https://github.com/huggingface/transformers" target="_blank">HuggingFace Transformers</a>: bug reports (#4121, #4021), T5 pipeline fix (#3985), docs.</li>
+        <li>Fixed multi-input support in <a href="https://github.com/surmenok/keras_lr_finder/pull/21" target="_blank">keras_lr_finder</a>.</li>
+        <li>Bug fixes in <a href="https://github.com/streamlit/streamlit/pull/3694" target="_blank">Streamlit</a> and <a href="https://github.com/inception-project/framenet-tools/pull/22" target="_blank">framenet-tools</a>.</li>
+        <li>Proposed Noun Compound Interpretation as a tracked NLP task in <a href="https://github.com/sebastianruder/NLP-progress/issues/217" target="_blank">NLP-progress</a>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-header"><h2>Education</h2></div>
+      <div class="edu-item">
+        <div class="edu-degree">Ph.D — Natural Language Processing</div>
+        <div class="edu-inst"><a href="http://www.iitb.ac.in/" target="_blank">Indian Institute of Technology Bombay</a>, Mumbai</div>
+        <div class="edu-award">Best Poster (Technical), Research-Scholar Mela 2016, CSE Dept.</div>
+        <div class="edu-award">First Prize, Poster Session, RISC 2016.</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">M.Tech — Computer Science</div>
+        <div class="edu-inst"><a href="http://www.isical.ac.in/" target="_blank">Indian Statistical Institute</a>, Kolkata</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">B.E. — Computer Engineering</div>
+        <div class="edu-inst"><a href="http://www.saurashtrauniversity.edu/" target="_blank">Saurashtra University</a>, Rajkot</div>
+      </div>
+    </section>
+
+    <footer>&copy; 2025 Girishkumar Ponkiya</footer>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const btn  = document.getElementById('theme-toggle');
+    const icon = btn.querySelector('i');
+    const DARK = 'dark', LIGHT = 'light';
+    const CURRENT_LAYOUT = 'a';
+    const LAYOUTS = {
+      a: 'option-a-terminal.html',
+      b: 'option-b-academic.html',
+      c: 'option-c-glass.html',
+      d: 'option-d-split.html',
+      e: 'option-e-sidebar-glass.html',
+      f: 'option-f-split-glass.html',
+    };
+
+    document.querySelectorAll('.layout-btn').forEach(lb => {
+      if (lb.dataset.layout === CURRENT_LAYOUT) lb.classList.add('active');
+      lb.addEventListener('click', () => {
+        if (lb.dataset.layout === CURRENT_LAYOUT) return;
+        localStorage.setItem('layout', lb.dataset.layout);
+        window.location.href = LAYOUTS[lb.dataset.layout];
+      });
+    });
+
+    function systemTheme() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK : LIGHT;
+    }
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      icon.className = theme === DARK ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      btn.title = theme === DARK ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+
+    applyTheme(localStorage.getItem('theme') || systemTheme());
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) applyTheme(e.matches ? DARK : LIGHT);
+    });
+
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === DARK ? LIGHT : DARK;
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+  </script>
+</body>
+</html>
