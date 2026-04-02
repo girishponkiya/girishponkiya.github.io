@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Girishkumar Ponkiya — iOS v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    /* ── Light theme — liquid glass: wallpaper warmth bleeds through ── */
+    :root, [data-theme="light"] {
+      --bg: #f2f2f7;
+      --wallpaper-overlay: rgba(255, 255, 255, 0.05);
+      --card-bg: rgba(255, 255, 255, 0.20);
+      --card-bg-strong: rgba(255, 255, 255, 0.28);
+      --inner-card-bg: rgba(255, 255, 255, 0.18);
+      --inner-card-border: rgba(255, 255, 255, 0.34);
+      --card-border: rgba(255, 255, 255, 0.58);
+      --card-highlight: inset 0 0.5px 0 rgba(255, 255, 255, 0.90);
+      --card-shadow: 0 2px 28px rgba(0, 0, 0, 0.10), 0 0 0 0.5px rgba(0, 0, 0, 0.05);
+      --card-blur: 28px;
+      --card-saturate: 180%;
+      --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+      --text: #000000;
+      --text-secondary: #1c1c1e;
+      --text-tertiary: #3a3a3c;
+      --text-quaternary: #6e6e73;
+      --separator: rgba(60, 60, 67, 0.18);
+      --separator-opaque: #c6c6c8;
+      --accent: #0060cc;
+      --accent-secondary: #4240b8;
+      --gold: #ff9500;
+      --fill: rgba(120, 120, 128, 0.16);
+      --fill-secondary: rgba(120, 120, 128, 0.10);
+      --grouped-bg: rgba(255, 255, 255, 0.55);
+      --tag-bg: rgba(60, 60, 67, 0.09);
+      --tag-text: #3a3a3c;
+      --toggle-bg: rgba(255, 255, 255, 0.52);
+      --toggle-border: rgba(255, 255, 255, 0.70);
+      --profile-scrim: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.35));
+      --specular-top: rgba(255, 255, 255, 0.22);
+      --specular-gradient: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 32%, transparent 64%);
+    }
+
+    /* ── Dark theme — liquid glass on deep black ── */
+    [data-theme="dark"] {
+      --bg: #000000;
+      --wallpaper-overlay: rgba(0, 0, 0, 0.32);
+      --card-bg: rgba(255, 255, 255, 0.11);
+      --card-bg-strong: rgba(255, 255, 255, 0.16);
+      --inner-card-bg: rgba(255, 255, 255, 0.08);
+      --inner-card-border: rgba(255, 255, 255, 0.14);
+      --card-border: rgba(255, 255, 255, 0.18);
+      --card-highlight: inset 0 0.5px 0 rgba(255, 255, 255, 0.28);
+      --card-shadow: 0 2px 28px rgba(0, 0, 0, 0.40), 0 0 0 0.5px rgba(255, 255, 255, 0.07);
+      --card-blur: 28px;
+      --card-saturate: 180%;
+      --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+      --text: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.92);
+      --text-tertiary: rgba(255, 255, 255, 0.72);
+      --text-quaternary: rgba(255, 255, 255, 0.45);
+      --separator: rgba(255, 255, 255, 0.12);
+      --separator-opaque: #38383a;
+      --accent: #0a84ff;
+      --accent-secondary: #5e5ce6;
+      --gold: #ff9f0a;
+      --fill: rgba(255, 255, 255, 0.10);
+      --fill-secondary: rgba(255, 255, 255, 0.06);
+      --grouped-bg: rgba(255, 255, 255, 0.08);
+      --tag-bg: rgba(255, 255, 255, 0.11);
+      --tag-text: rgba(255, 255, 255, 0.78);
+      --toggle-bg: rgba(255, 255, 255, 0.10);
+      --toggle-border: rgba(255, 255, 255, 0.18);
+      --profile-scrim: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.55));
+      --specular-top: rgba(255, 255, 255, 0.12);
+      --specular-gradient: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.03) 32%, transparent 64%);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #000000;
+        --wallpaper-overlay: rgba(0, 0, 0, 0.32);
+        --card-bg: rgba(255, 255, 255, 0.11);
+        --card-bg-strong: rgba(255, 255, 255, 0.16);
+        --inner-card-bg: rgba(255, 255, 255, 0.08);
+        --inner-card-border: rgba(255, 255, 255, 0.14);
+        --card-border: rgba(255, 255, 255, 0.18);
+        --card-highlight: inset 0 0.5px 0 rgba(255, 255, 255, 0.28);
+        --card-shadow: 0 2px 28px rgba(0, 0, 0, 0.40), 0 0 0 0.5px rgba(255, 255, 255, 0.07);
+        --card-blur: 14px;
+        --card-saturate: 200%;
+        --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+        --text: #ffffff;
+        --text-secondary: rgba(255, 255, 255, 0.92);
+        --text-tertiary: rgba(255, 255, 255, 0.72);
+        --text-quaternary: rgba(255, 255, 255, 0.45);
+        --separator: rgba(255, 255, 255, 0.12);
+        --separator-opaque: #38383a;
+        --accent: #0a84ff;
+        --accent-secondary: #5e5ce6;
+        --gold: #ff9f0a;
+        --fill: rgba(255, 255, 255, 0.10);
+        --fill-secondary: rgba(255, 255, 255, 0.06);
+        --grouped-bg: rgba(255, 255, 255, 0.08);
+        --tag-bg: rgba(255, 255, 255, 0.11);
+        --tag-text: rgba(255, 255, 255, 0.78);
+        --toggle-bg: rgba(255, 255, 255, 0.10);
+        --toggle-border: rgba(255, 255, 255, 0.18);
+        --profile-scrim: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.55));
+        --specular-top: rgba(255, 255, 255, 0.12);
+        --specular-gradient: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.03) 32%, transparent 64%);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
+    /* ── Sharp page wallpaper ── */
+    .blur-bg {
+      position: fixed;
+      inset: 0;
+      background: url('images/background_bold.jpg') center / cover no-repeat;
+      filter: brightness(0.72) saturate(1.05);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Light-mode: slightly brighter */
+    [data-theme="light"] .blur-bg {
+      filter: brightness(0.82) saturate(0.88);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) .blur-bg {
+        filter: brightness(0.82) saturate(0.88);
+      }
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+      background: var(--wallpaper-overlay);
+      color: var(--text);
+      line-height: 1.58;
+      font-weight: 450;
+      font-size: 0.94rem;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background 0.3s ease, color 0.3s ease;
+      text-shadow: var(--text-shadow);
+    }
+
+    a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Controls toolbar ── */
+    .controls {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 14px;
+      padding: 4px;
+      box-shadow: var(--card-shadow);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+
+    .layout-btn,
+    .theme-toggle {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: var(--text-quaternary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .layout-btn:hover,
+    .theme-toggle:hover {
+      background: var(--fill);
+      color: var(--accent);
+    }
+
+    .layout-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .ctrl-divider {
+      width: 1px;
+      height: 18px;
+      background: var(--toggle-border);
+      margin: 0 2px;
+    }
+
+    /* ── iOS-style card container — centred column ── */
+    .ios-stack {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+      display: grid;
+      gap: 14px;
+    }
+
+    /* ────────────────────────────────────────────────────────────────
+       Liquid glass card system
+       ──────────────────────────────────────────────────────────────── */
+
+    /*
+     * Outer card — a transparent shell that clips children to rounded rect.
+     * The glass effect lives entirely in .glass-layer so that card content
+     * (text, images) is rendered on a separate stacking layer and stays sharp.
+     */
+    .ios-card {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      /* Depth shadow lives on the outer card; highlights on the glass layer */
+      box-shadow: var(--card-shadow);
+    }
+
+    /*
+     * Glass layer — positioned absolute, fills the card.
+     *
+     * Rendering pipeline:
+     *   1. backdrop-filter: blur(20px) saturate(200%)
+     *      → captures and blurs the wallpaper visible through the card
+     *   2. background: var(--card-bg)
+     *      → tints the blurred backdrop with a translucent wash
+     *   3. filter: url(#liquid-glass)
+     *      → applies the SVG filter chain to the COMPOSITED result above:
+     *         feTurbulence → feDisplacementMap → feGaussianBlur
+     *         creating organic lens distortion + appearance softening
+     *   4. ::after gradient — specular highlight along the top edge
+     *
+     * Content (.ios-card-body etc.) sits at z-index: 1 above this layer,
+     * so text/icons are never passed through the distortion filter.
+     */
+    .glass-layer {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      /* top-edge specular */
+      box-shadow: inset 0 0.5px 0 var(--specular-top);
+      backdrop-filter: blur(var(--card-blur)) saturate(var(--card-saturate));
+      -webkit-backdrop-filter: blur(var(--card-blur)) saturate(var(--card-saturate));
+      /* Liquid glass SVG filter (appearance-blur stdDeviation 1.1, within 0.9–1.5) */
+      filter: url(#liquid-glass);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Specular gradient — top-bright catch light fading to nothing */
+    .glass-layer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: var(--specular-gradient);
+      pointer-events: none;
+    }
+
+    /* All card content must sit above the glass layer */
+    .ios-card-body {
+      position: relative;
+      z-index: 1;
+      padding: 22px;
+    }
+
+    /* ── Profile widget — floats transparently on the wallpaper ── */
+    .profile-widget {
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    /* Gradient scrim darkens the lower portion for text legibility */
+    .profile-widget::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.00)  0%,
+        rgba(0, 0, 0, 0.04) 45%,
+        rgba(0, 0, 0, 0.55) 75%,
+        rgba(0, 0, 0, 0.78) 100%
+      );
+      pointer-events: none;
+    }
+
+    .profile-content {
+      position: relative;
+      z-index: 1;
+      padding: 20px 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-end;
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 26px;
+      border: 2.5px solid rgba(255, 255, 255, 0.50);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18), inset 0 0 0 0.5px rgba(255, 255, 255, 0.30);
+      flex-shrink: 0;
+      overflow: hidden;
+      background: var(--fill);
+    }
+
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .profile-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .profile-name {
+      font-size: 1.5rem;
+      font-weight: 780;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: #ffffff;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.40);
+    }
+
+    .profile-role {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 3px;
+    }
+
+    .profile-tagline {
+      font-size: 0.86rem;
+      font-weight: 450;
+      color: rgba(255, 255, 255, 0.70);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .profile-links {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 0 20px 18px;
+    }
+
+    .profile-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.30);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.80);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+    }
+
+    .profile-links a:hover {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.20);
+      color: #ffffff;
+      transform: scale(1.06);
+    }
+
+    .profile-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0 20px 16px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.82rem;
+      font-weight: 550;
+    }
+
+    .meta-pill i {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.60);
+    }
+
+    /* ── Section header ── */
+    .section-label {
+      font-size: 0.70rem;
+      font-weight: 700;
+      color: var(--text-quaternary);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 5px;
+      text-shadow: 0 0.5px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-header {
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--separator);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 1.28rem;
+      font-weight: 750;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 0.84rem;
+      color: var(--text-tertiary);
+      margin-top: 2px;
+    }
+
+    /* ── Text content ── */
+    .prose {
+      color: var(--text-secondary);
+      line-height: 1.72;
+      font-weight: 450;
+    }
+
+    .prose + .prose {
+      margin-top: 14px;
+    }
+
+    .prose strong {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .prose em {
+      color: var(--text-tertiary);
+    }
+
+    .prose a {
+      font-weight: 550;
+    }
+
+    /* ── iOS-style list rows ── */
+    .ios-row-group {
+      display: grid;
+      gap: 0;
+    }
+
+    .ios-row {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--separator);
+    }
+
+    .ios-row:last-child {
+      border-bottom: none;
+    }
+
+    .ios-row-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .ios-row-subtitle {
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text-quaternary);
+      margin-top: 3px;
+    }
+
+    .ios-row-meta {
+      font-size: 0.86rem;
+      font-weight: 450;
+      color: var(--text-tertiary);
+      margin-top: 5px;
+      line-height: 1.58;
+    }
+
+    .ios-row-body {
+      font-weight: 450;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      line-height: 1.68;
+    }
+
+    .ios-row-body strong {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    /* ── Inner card — liquid glass nesting ── */
+    .ios-inner-card {
+      margin-top: 10px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--inner-card-bg);
+      border: 1px solid var(--inner-card-border);
+      box-shadow: inset 0 0.5px 0 var(--specular-top);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+    }
+
+    /* ── Award badges ── */
+    .award-badge {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-top: 8px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      line-height: 1.48;
+    }
+
+    .award-badge i {
+      color: var(--gold);
+      margin-top: 2px;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+    }
+
+    /* ── Disclosure / details — quiet inline trigger, no box ── */
+    details {
+      margin-top: 10px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text-quaternary);
+      padding: 2px 0;
+      line-height: 1.2;
+      text-underline-offset: 2px;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: var(--separator-opaque);
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary i { font-size: 0.6rem; transition: transform 0.2s; }
+    details[open] summary i { transform: rotate(90deg); }
+    details[open] summary { margin-bottom: 10px; }
+
+    .detail-content {
+      font-size: 0.86rem;
+      font-weight: 450;
+      color: var(--text-tertiary);
+      padding-bottom: 10px;
+      line-height: 1.62;
+    }
+
+    .detail-content p { color: var(--text-tertiary); }
+    .detail-content p + p { margin-top: 8px; }
+    .detail-content strong { color: var(--text-secondary); font-weight: 650; }
+
+    .detail-content ul {
+      padding-left: 18px;
+      display: grid;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .detail-content li { line-height: 1.5; }
+
+    /* ── Skills — tag cloud ── */
+    .skill-category {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--separator);
+    }
+
+    .skill-category:first-child { padding-top: 0; }
+    .skill-category:last-child { border-bottom: none; }
+
+    .skill-category-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-quaternary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* ── Publications ── */
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 0;
+    }
+
+    .pub-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--separator);
+      font-weight: 450;
+      line-height: 1.62;
+      color: var(--text-secondary);
+    }
+
+    .pub-item:last-child { border-bottom: none; }
+
+    .pub-item strong { color: var(--text); font-weight: 650; }
+    .pub-item em { color: var(--text-tertiary); }
+    .pub-item a {
+      margin-left: 4px;
+      font-size: 0.72rem;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+    .pub-item a:hover { opacity: 1; }
+
+    /* ── Projects — row list matching other sections ── */
+    .project-grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .project-cell {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--separator);
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .project-cell:last-child {
+      border-bottom: none;
+    }
+
+    .project-cell-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .project-cell-title a {
+      color: var(--accent);
+    }
+
+    .project-cell p {
+      font-weight: 450;
+      color: var(--text-secondary);
+      line-height: 1.68;
+    }
+
+    .oss-links {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+    }
+
+    .oss-links a {
+      font-weight: 500;
+    }
+
+    .scholar-link {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+    }
+
+    .scholar-link i {
+      color: var(--accent);
+      margin-right: 4px;
+    }
+
+    /* ── Venue badges ── */
+    .venue-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 2px 7px;
+      border-radius: 6px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      vertical-align: middle;
+      line-height: 1.7;
+      white-space: nowrap;
+    }
+
+    .venue-acl    { background: rgba(0, 96, 204, 0.12);   color: #004faa; }
+    .venue-emnlp  { background: rgba(98, 60, 234, 0.11);  color: #5330b8; }
+    .venue-coling { background: rgba(0, 140, 130, 0.11);  color: #00706a; }
+    .venue-lrec   { background: rgba(210, 100, 0, 0.11);  color: #b05500; }
+    .venue-icon   { background: rgba(120, 120, 128, 0.11);color: #555560; }
+    .venue-arxiv  { background: rgba(180, 28, 28, 0.11);  color: #9c1c1c; }
+
+    [data-theme="dark"] .venue-acl    { background: rgba(10, 132, 255, 0.18);  color: #5ac8fa; }
+    [data-theme="dark"] .venue-emnlp  { background: rgba(94, 92, 230, 0.20);   color: #bf8fff; }
+    [data-theme="dark"] .venue-coling { background: rgba(0, 209, 193, 0.17);   color: #5de6de; }
+    [data-theme="dark"] .venue-lrec   { background: rgba(255, 159, 10, 0.18);  color: #ffc244; }
+    [data-theme="dark"] .venue-icon   { background: rgba(142, 142, 147, 0.18); color: #aeaeb2; }
+    [data-theme="dark"] .venue-arxiv  { background: rgba(255, 69, 58, 0.18);   color: #ff6961; }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .venue-acl    { background: rgba(10, 132, 255, 0.18);  color: #5ac8fa; }
+      :root:not([data-theme="light"]) .venue-emnlp  { background: rgba(94, 92, 230, 0.20);   color: #bf8fff; }
+      :root:not([data-theme="light"]) .venue-coling { background: rgba(0, 209, 193, 0.17);   color: #5de6de; }
+      :root:not([data-theme="light"]) .venue-lrec   { background: rgba(255, 159, 10, 0.18);  color: #ffc244; }
+      :root:not([data-theme="light"]) .venue-icon   { background: rgba(142, 142, 147, 0.18); color: #aeaeb2; }
+      :root:not([data-theme="light"]) .venue-arxiv  { background: rgba(255, 69, 58, 0.18);   color: #ff6961; }
+    }
+
+    /* ── Skill tag category color tints ── */
+    .tag-nlp {
+      background: rgba(0, 96, 204, 0.10);
+      color: #0050b3;
+    }
+
+    .tag-infra {
+      background: rgba(88, 50, 210, 0.10);
+      color: #4d2db0;
+    }
+
+    .tag-frameworks {
+      background: rgba(28, 150, 55, 0.10);
+      color: #166c2c;
+    }
+
+    [data-theme="dark"] .tag-nlp         { background: rgba(10, 132, 255, 0.16); color: #5ac8fa; }
+    [data-theme="dark"] .tag-infra       { background: rgba(94, 92, 230, 0.20);  color: #bf8fff; }
+    [data-theme="dark"] .tag-frameworks  { background: rgba(48, 209, 88, 0.16);  color: #30d158; }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .tag-nlp        { background: rgba(10, 132, 255, 0.16); color: #5ac8fa; }
+      :root:not([data-theme="light"]) .tag-infra      { background: rgba(94, 92, 230, 0.20);  color: #bf8fff; }
+      :root:not([data-theme="light"]) .tag-frameworks { background: rgba(48, 209, 88, 0.16);  color: #30d158; }
+    }
+
+    /* ── Clear mode — content floats on wallpaper without glass shells ── */
+    [data-style="clear"] .ios-card:not(.profile-widget) {
+      background: transparent;
+      box-shadow: none;
+    }
+    [data-style="clear"] .ios-card:not(.profile-widget) .glass-layer {
+      display: none;
+    }
+    /* background_bold.jpg is always dark — force light text in clear mode
+       regardless of theme, since tinted cards are what create a light surface in light mode */
+    [data-style="clear"] .ios-card:not(.profile-widget) {
+      --text: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.92);
+      --text-tertiary: rgba(255, 255, 255, 0.72);
+      --text-quaternary: rgba(255, 255, 255, 0.50);
+      --separator: rgba(255, 255, 255, 0.15);
+      --accent: #5ac8fa;
+      --tag-bg: rgba(255, 255, 255, 0.12);
+      --tag-text: rgba(255, 255, 255, 0.78);
+    }
+    /* Subtle scrim behind card content for legibility over busy wallpaper */
+    [data-style="clear"] .ios-card:not(.profile-widget) .ios-card-body {
+      background: rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 18px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    /* Light mode: lighter scrim — wallpaper bleeds through more */
+    [data-theme="light"][data-style="clear"] .ios-card:not(.profile-widget) .ios-card-body {
+      background: rgba(0, 0, 0, 0.18);
+    }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"])[data-style="clear"] .ios-card:not(.profile-widget) .ios-card-body {
+        background: rgba(0, 0, 0, 0.18);
+      }
+    }
+
+    /* ── Footer ── */
+    .footer-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-quaternary);
+      padding: 12px 0 8px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .ios-stack {
+        padding: 16px 10px 36px;
+        gap: 12px;
+      }
+
+      .profile-widget {
+        min-height: 300px;
+      }
+
+      .profile-content {
+        padding: 16px 16px 0;
+      }
+
+      .profile-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 22px;
+      }
+
+
+      .profile-name {
+        font-size: 1.25rem;
+      }
+
+      .profile-links {
+        padding: 0 16px 14px;
+      }
+
+      .profile-meta {
+        padding: 0 16px 14px;
+      }
+
+      .ios-card-body {
+        padding: 16px;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      .controls {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .ios-card {
+        border-radius: 16px;
+      }
+
+      .profile-widget {
+        border-radius: 0;
+      }
+
+      .profile-name {
+        font-size: 1.15rem;
+      }
+
+      .profile-role {
+        font-size: 0.82rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    ── Liquid glass SVG filter ──────────────────────────────────────────────
+
+    Rendering chain applied to .glass-layer (which already has backdrop-filter):
+
+      [backdrop-filter: blur(20px) saturate(200%)] — captured blurred wallpaper
+        ↓ composited with card background tint
+      [feTurbulence] — fractal noise map (seed controls shape variation)
+        ↓
+      [feDisplacementMap scale=7] — warps the composited glass surface with the
+        noise, simulating refraction through curved glass (lens distortion)
+        ↓
+      [feGaussianBlur stdDeviation=1.1] — appearance blur (0.9–1.5 range)
+        softens the displaced edges for a polished, melted-glass quality
+
+    Tune:
+      · scale (3–10): strength of lens warp. Higher → more visible distortion.
+      · baseFrequency (0.006–0.020): size of liquid bumps. Lower → larger waves.
+      · stdDeviation (0.9–1.5): appearance softening of the distortion edge.
+  -->
+  <svg xmlns="http://www.w3.org/2000/svg"
+       style="position:absolute;pointer-events:none;width:0;height:0;overflow:hidden"
+       aria-hidden="true">
+    <defs>
+      <filter id="liquid-glass"
+              x="-10%" y="-10%" width="120%" height="120%"
+              color-interpolation-filters="sRGB">
+        <!-- Organic fractal noise — the "liquid" surface map -->
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.011 0.009"
+          numOctaves="3"
+          seed="7"
+          result="noise"/>
+        <!-- Displace the glass surface using the noise map -->
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="7"
+          xChannelSelector="R"
+          yChannelSelector="G"
+          result="displaced"/>
+        <!-- Appearance blur (0.9–1.5): softens distortion for glass-like smoothness -->
+        <feGaussianBlur
+          in="displaced"
+          stdDeviation="1.1"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Blurred wallpaper layer (page bg) — hero card uses the sharp version -->
+  <div class="blur-bg" aria-hidden="true"></div>
+
+  <!-- Controls toolbar -->
+  <div class="controls" role="toolbar" aria-label="Layout and theme controls">
+    <button class="layout-btn" data-layout="a" title="Terminal">A</button>
+    <button class="layout-btn" data-layout="b" title="Academic">B</button>
+    <button class="layout-btn" data-layout="c" title="Glass">C</button>
+    <button class="layout-btn" data-layout="d" title="Split">D</button>
+    <button class="layout-btn" data-layout="e" title="Sidebar Glass">E</button>
+    <button class="layout-btn" data-layout="f" title="Split Glass">F</button>
+    <button class="layout-btn" data-layout="g" title="Sidebar Flat">G</button>
+    <button class="layout-btn" data-layout="ios" title="iOS"><i class="fa-brands fa-apple"></i></button>
+    <button class="layout-btn" data-layout="ios2" title="iOS v2 — liquid glass"><i class="fa-brands fa-apple"></i>2</button>
+    <div class="ctrl-divider"></div>
+    <button class="theme-toggle" id="cards-toggle" title="Clear" aria-label="Toggle clear/tinted">
+      <i class="fa-solid fa-droplet"></i>
+    </button>
+    <div class="ctrl-divider"></div>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+
+  <div class="ios-stack">
+
+    <!-- Profile widget -->
+    <div class="ios-card profile-widget" id="about">
+      <div class="profile-content">
+        <div class="profile-avatar">
+          <img src="images/profile.jpeg" alt="Girishkumar Ponkiya">
+        </div>
+        <div class="profile-info">
+          <div class="profile-name">Girishkumar Ponkiya</div>
+          <div class="profile-role">Vice President · Data Scientist | Applied AI &amp; NLP</div>
+          <div class="profile-tagline">Teaching Machines · Training Developers</div>
+        </div>
+      </div>
+      <div class="profile-links" aria-label="Profile links">
+        <a href="https://github.com/girishponkiya" target="_blank" rel="noreferrer" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/girishponkiya/" target="_blank" rel="noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://stackoverflow.com/users/1726226" target="_blank" rel="noreferrer" title="Stack Overflow"><i class="fa-brands fa-stack-overflow"></i></a>
+        <a href="https://scholar.google.co.in/citations?user=ubXkRzcAAAAJ" target="_blank" rel="noreferrer" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+        <a href="https://medium.com/@girishponkiya" target="_blank" rel="noreferrer" title="Medium"><i class="fa-brands fa-medium"></i></a>
+        <a href="mailto:girish.isical@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="CV.pdf" target="_blank" rel="noreferrer" title="Curriculum Vitae (PDF)"><i class="fa-regular fa-file-pdf"></i></a>
+      </div>
+      <div class="profile-meta">
+        <span class="meta-pill"><i class="fa-solid fa-graduation-cap"></i> Ph.D. · IIT Bombay</span>
+        <span class="meta-pill"><i class="fa-solid fa-file-lines"></i> ACL · EMNLP · COLING</span>
+        <span class="meta-pill"><i class="fa-solid fa-microchip"></i> NLP &amp; LLM Systems</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="ios-card">
+      <div class="glass-layer" aria-hidden="true"></div>
+      <div class="ios-card-body">
+        <div class="section-header">
+          <div class="section-label">About</div>
+          <div class="section-title">Applied AI meets research rigour.</div>
+        </div>
+        <p class="prose">I am the sole AI/ML specialist at <strong>ISS STOXX's Technology Innovation Lab</strong>, where I own the full LLM infrastructure stack end-to-end — from deploying and optimising models on internal GPU infrastructure to building NLP pipelines that process ~700K news articles daily across 10+ languages for ESG controversy monitoring.</p>
+        <p class="prose">My doctoral research at <strong>IIT Bombay</strong> on <em>Noun Compound Interpretation</em> explored how to automatically uncover implicit semantic relations between nouns — through supervised LSTM paraphrasing, unsupervised approaches with BERT/RoBERTa and T5, and frame-semantic labeling using FrameNet. This work was published at ACL, EMNLP, and COLING.</p>
+        <p class="prose">I also design and deliver a company-wide <strong>"Introduction to LLM for Software Developers"</strong> workshop series (~70 participants per session), contribute to open source NLP tooling (Hugging Face Transformers, spaCy ecosystem), and have open-sourced a <a href="https://github.com/iss-lab/vllm-dashboard" target="_blank" rel="noreferrer">vLLM monitoring dashboard</a> built on Telegraf, InfluxDB, and Grafana.</p>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="ios-card" id="experience">
+      <div class="glass-layer" aria-hidden="true"></div>
+      <div class="ios-card-body">
+        <div class="section-header">
+          <div class="section-label">Experience</div>
+          <div class="section-title">From research to production AI.</div>
+        </div>
+        <div class="ios-row-group">
+          <div class="ios-row">
+            <div class="ios-row-title">Data Scientist — ISS STOXX, Technology Innovation Lab</div>
+            <div class="ios-row-subtitle">Mumbai, India · Mar 2021 – Present</div>
+            <div class="ios-row-meta">Individual contributor; cross-functional AI advisor. Associate Vice President (Mar 2021 – Dec 2025) → Vice President (Jan 2026 – Present).</div>
+            <div class="ios-row-body">
+              <strong>NLP &amp; ESG pipelines:</strong> Built and own the news filtering pipeline (NER, entity linking, relevance scoring) processing ~700K articles/day across 10+ languages — relevance rate grew from ~2% to ~35% over 4 years.<br>
+              <strong>LLM infrastructure:</strong> Deployed multiple LLMs on internal GPU infrastructure using vLLM with production-grade optimisations. Built and open-sourced the <a href="https://github.com/iss-lab/vllm-dashboard" target="_blank" rel="noreferrer">vllm-dashboard</a> monitoring stack.<br>
+              <strong>AI enablement:</strong> Delivering a company-wide "Introduction to LLM for Software Developers" workshop series (~70 participants/session).<br>
+              <strong>Index products:</strong> Leading AI-driven thematic index and sentiment index initiatives for STOXX.
+            </div>
+            <details>
+              <summary><span>Detailed contributions</span><i class="fa-solid fa-chevron-down"></i></summary>
+              <div class="detail-content">
+                <ul>
+                  <li>Evaluated 5 NER tools against internal ESG data; integrated spaCy, CoreNLP, and Diffbot into the production NiFi pipeline. NER model P/R/F consistently above 85%.</li>
+                  <li>Contributed to Japanese-language expansion raising relevance from ~9% to ~33%.</li>
+                  <li>Devised a novel threshold identification approach enabling mathematical confidence bounds on relevance and false positive rates — previously unmeasurable.</li>
+                  <li>Redesigned entity linking around a Memgraph knowledge graph for better adaptability to dynamic entity universes.</li>
+                  <li>Deployed LLMs (including Gemma3:27B) with FP8 quantization, kv-cache quantization, and multi-GPU tensor parallelism. Identified a CPU-level bottleneck (missing AVX2/AVX-512) leading to a hardware upgrade.</li>
+                  <li>Built AI-driven document processing pipeline for thematic index: PDF → Markdown (Docling) → section filtering → LLM summarisation.</li>
+                  <li>Developed aspect-based sentiment analysis for the AI-driven STOXX sentiment index using E3 APIs and Vespa-backed vector embeddings.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <div class="ios-row">
+            <div class="ios-row-title">Machine Learning Consultant — UnFound</div>
+            <div class="ios-row-subtitle">Mumbai, India · Dec 2018 – Jun 2019</div>
+            <div class="ios-row-meta">Re-defined question answering and stance detection pipelines using BERT. Developed a multi-task learning approach for stance detection.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="ios-card" id="skills">
+      <div class="glass-layer" aria-hidden="true"></div>
+      <div class="ios-card-body">
+        <div class="section-header">
+          <div class="section-label">Skills</div>
+          <div class="section-title">Technical toolkit.</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-label">NLP &amp; ML</div>
+          <div class="tag-cloud">
+            <span class="tag tag-nlp">NER &amp; entity linking</span>
+            <span class="tag tag-nlp">RAG pipelines</span>
+            <span class="tag tag-nlp">Knowledge graphs</span>
+            <span class="tag tag-nlp">Sentiment analysis</span>
+            <span class="tag tag-nlp">Text classification</span>
+            <span class="tag tag-nlp">Noun compound interpretation</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-label">LLM Infrastructure</div>
+          <div class="tag-cloud">
+            <span class="tag tag-infra">vLLM</span>
+            <span class="tag tag-infra">Grafana / Telegraf / InfluxDB</span>
+            <span class="tag tag-infra">Kubernetes</span>
+            <span class="tag tag-infra">Apache NiFi</span>
+            <span class="tag tag-infra">Vespa</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-label">Frameworks &amp; Languages</div>
+          <div class="tag-cloud">
+            <span class="tag tag-frameworks">Python</span>
+            <span class="tag tag-frameworks">PyTorch</span>
+            <span class="tag tag-frameworks">Hugging Face Transformers</span>
+            <span class="tag tag-frameworks">spaCy</span>
+            <span class="tag tag-frameworks">scikit-learn</span>
+            <span class="tag tag-frameworks">Java</span>
+            <span class="tag tag-frameworks">SQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="ios-card" id="education">
+      <div class="glass-layer" aria-hidden="true"></div>
+      <div class="ios-card-body">
+        <div class="section-header">
+          <div class="section-label">Education</div>
+          <div class="section-title">Academic foundations.</div>
+        </div>
+        <div class="ios-row-group">
+          <div class="ios-row">
+            <div class="ios-row-title">Ph.D., Computer Science (Natural Language Processing)</div>
+            <div class="ios-row-subtitle">Indian Institute of Technology Bombay (IIT Bombay), Mumbai</div>
+            <div class="ios-row-meta">Thesis submitted: Mar 2021 · Degree awarded: 2023 · CPI: 7.7<br>Thesis: <em>Noun Compound Interpretation</em>. Supervisors: Prof. Pushpak Bhattacharyya (IIT Bombay) and Mr. Girish K. Palshikar (TRDDC, TCS Research).</div>
+            <div class="ios-inner-card" style="margin-top:10px; font-size:0.86rem; line-height:1.55; color:var(--text-secondary);">
+              Thesis arc: <strong>supervised LSTM paraphrasing</strong> → <strong>BERT/RoBERTa unsupervised MLM</strong> → <strong>T5 free-form generation</strong>. The unsupervised approaches <em>outperformed prior supervised baselines</em> without labelled data — the key finding of the thesis.
+            </div>
+            <div class="award-badge" style="margin-top:10px;"><i class="fa-solid fa-award"></i><span>Best Poster (Technical), Research-Scholar Mela 2016, CSE Dept., IIT Bombay.</span></div>
+            <div class="award-badge"><i class="fa-solid fa-award"></i><span>First Prize, poster session, RISC 2016.</span></div>
+            <details>
+              <summary><span>Research details</span><i class="fa-solid fa-chevron-down"></i></summary>
+              <div class="detail-content">
+                <p>The thesis addressed <strong>Noun Compound Interpretation (NCI)</strong>: automatically uncovering implicit semantic relations between component nouns (e.g., <em>student protest</em> → "student is the doer of the protest").</p>
+                <p><strong>Contributions:</strong> (1) An LSTM-based supervised model for prepositional paraphrasing; (2) Unsupervised methods using BERT/RoBERTa (fill-in-the-blank MLM) and T5 (free-form generation) — these <em>unsupervised approaches outperformed prior supervised baselines</em>; (3) FrameNet-based semantic relations for noun compound labeling; (4) Zero-shot learning using FrameNet as a lexical resource via ConvE embeddings.</p>
+                <p><strong>Relevant courses:</strong> Foundation of ML, NLP and the Web, Artificial Intelligence, Topics in NLP (Machine Translation).</p>
+                <p>Research originated during a 2014 TRDDC internship. Internship mentor Girish K. Palshikar became Ph.D. co-supervisor — a direct intellectual lineage from internship to completed PhD.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="ios-row">
+            <div class="ios-row-title">M.Tech., Computer Science</div>
+            <div class="ios-row-subtitle">Indian Statistical Institute (ISI), Kolkata · 2011–2013 · 78.67%</div>
+            <div class="ios-row-meta">Dissertation: <em>Priority Search Tree for Secondary Memory and its Application</em> (Q-MER Problem). Supervisor: Prof. Subhas C. Nandy.</div>
+            <div class="award-badge"><i class="fa-solid fa-star"></i><span>Dissertation nominated for the Best Dissertation Award.</span></div>
+            <details>
+              <summary><span>Dissertation details</span><i class="fa-solid fa-chevron-down"></i></summary>
+              <div class="detail-content">
+                <p>Addressed the <strong>Q-MER (Query Maximal Empty Rectangle)</strong> problem in external memory — finding the largest axis-parallel empty rectangle around a query point among massive point sets that exceed main memory.</p>
+                <p><strong>Contributions:</strong> (1) Proposed algorithm for an external priority search tree with linear space in log-linear time; (2) Showed all standard range queries can be answered efficiently; (3) Algorithm to solve MER with O(log n) extra space in main memory.</p>
+                <p><strong>Relevant courses:</strong> Pattern Recognition, Advanced Algorithms, Graph Theory, Probability and Stochastic Processes, Image Processing.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="ios-row">
+            <div class="ios-row-title">B.E., Computer Engineering</div>
+            <div class="ios-row-subtitle">Saurashtra University, Rajkot · 2005–2009</div>
+            <div class="ios-row-meta">Projects: <em>GridApps</em> (web application for distributed batch processing on a grid) and <em>Web-PC</em> (J2ME + web application for remote PC access).</div>
+            <div class="award-badge"><i class="fa-solid fa-trophy"></i><span>Web-PC selected in Top 10 at C2C Project Competition by the Government of Gujarat, TCS, and Microsoft.</span></div>
+          </div>
+        </div>
+
+        <!-- Competitive Exams callout -->
+        <div class="ios-inner-card" style="margin-top:14px;">
+          <div class="skill-category-label" style="margin-bottom:8px;">Competitive Exams</div>
+          <div style="display:grid; gap:5px; font-size:0.86rem; color:var(--text-secondary);">
+            <div><strong>GATE 2013</strong> — 99.78 percentile · All India Rank 495</div>
+            <div><strong>GATE 2011</strong> — All India Rank 875 <span style="color:var(--text-quaternary); font-size:0.80rem;">(M.Tech. admission at ISI Kolkata)</span></div>
+            <div><strong>JEST 2013</strong> — Rank 65</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Publications -->
+    <div class="ios-card" id="publications">
+      <div class="glass-layer" aria-hidden="true"></div>
+      <div class="ios-card-body">
+        <div class="section-header">
+          <div class="section-label">Publications</div>
+          <div class="section-title">Peer-reviewed research.</div>
+        </div>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <span class="venue-badge venue-acl">ACL 2021</span><strong>Girishkumar Ponkiya</strong>, Diptesh Kanojia, Pushpak Bhattacharyya, Girish K. Palshikar. "FrameNet-assisted Noun Compound Interpretation." <em>Findings of ACL-IJCNLP 2021.</em> <a href="https://aclanthology.org/2021.findings-acl.256" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </li>
+          <li class="pub-item">
+            <span class="venue-badge venue-emnlp">EMNLP 2020</span><strong>Girishkumar Ponkiya</strong>, Rudra Murthy, Pushpak Bhattacharyya, Girish K. Palshikar. "Looking inside Noun Compounds: Unsupervised Prepositional and Free Paraphrasing using Language Models." <em>Findings of EMNLP 2020.</em> <a href="https://aclanthology.org/2020.findings-emnlp.386" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </li>
+          <li class="pub-item">
+            <span class="venue-badge venue-coling">COLING 2018</span><strong>Girishkumar Ponkiya</strong>, Kevin Patel, Pushpak Bhattacharyya, Girish K. Palshikar. "Treat us like the Sequences we are: Prepositional Paraphrasing of Noun Compounds using LSTM." <em>COLING 2018.</em> <a href="https://aclanthology.org/C18-1155" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </li>
+          <li class="pub-item">
+            <span class="venue-badge venue-lrec">LREC 2018</span><strong>Girishkumar Ponkiya</strong>, Kevin Patel, Pushpak Bhattacharyya, Girish K. Palshikar. "Towards a Standardized Dataset for Noun Compound Interpretation." <em>LREC 2018.</em> <a href="https://aclanthology.org/L18-1489" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </li>
+          <li class="pub-item">
+            <span class="venue-badge venue-icon">ICON 2016</span><strong>Girishkumar Ponkiya</strong>, Pushpak Bhattacharyya, Girish K. Palshikar. "On Why Coarse Class Classification is a Bottleneck for Noun Compound Interpretation." <em>ICON 2016.</em> <a href="https://aclanthology.org/W16-6336" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </li>
+          <li class="pub-item">
+            <span class="venue-badge venue-arxiv">arXiv 2021</span>Siddhesh Pawar, Shyam Thombre, Anirudh Mittal, <strong>Girishkumar Ponkiya</strong>, Pushpak Bhattacharyya. "Tapping BERT for Preposition Sense Disambiguation." <em>arXiv:2111.13972, 2021.</em> <a href="https://arxiv.org/abs/2111.13972" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </li>
+        </ul>
+        <p class="scholar-link"><i class="fa-solid fa-graduation-cap"></i> <a href="https://scholar.google.co.in/citations?user=ubXkRzcAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a> · ~56 citations</p>
+      </div>
+    </div>
+
+    <!-- Projects & Open Source -->
+    <div class="ios-card" id="projects">
+      <div class="glass-layer" aria-hidden="true"></div>
+      <div class="ios-card-body">
+        <div class="section-header">
+          <div class="section-label">Projects &amp; Open Source</div>
+          <div class="section-title">Building in the open.</div>
+        </div>
+        <div class="project-grid">
+          <div class="project-cell">
+            <div class="project-cell-title"><a href="https://github.com/iss-lab/vllm-dashboard" target="_blank" rel="noreferrer">vllm-dashboard</a></div>
+            <p>Open-source Telegraf → InfluxDB 2.0 → Grafana monitoring stack for vLLM inference servers. Monitors TTFT, throughput, KV-cache utilisation, HTTP responses, and Python GC.</p>
+          </div>
+          <div class="project-cell">
+            <div class="project-cell-title">Hugging Face Transformers</div>
+            <p>Bug reports (<a href="https://github.com/huggingface/transformers/issues/4121" target="_blank" rel="noreferrer">#4121</a>, <a href="https://github.com/huggingface/transformers/issues/4021" target="_blank" rel="noreferrer">#4021</a>), T5 pipeline solution (<a href="https://github.com/huggingface/transformers/issues/3985#issuecomment-622981083" target="_blank" rel="noreferrer">#3985</a>), code review (<a href="https://github.com/huggingface/transformers/pull/4367#discussion_r426356693" target="_blank" rel="noreferrer">PR #4367</a>), and <a href="https://github.com/huggingface/transformers/commits?author=girishponkiya" target="_blank" rel="noreferrer">documentation commits</a>.</p>
+          </div>
+        </div>
+        <p class="oss-links">Other contributions: <a href="https://github.com/surmenok/keras_lr_finder/pull/21" target="_blank" rel="noreferrer">keras_lr_finder</a> · <a href="https://github.com/streamlit/streamlit/pull/3694" target="_blank" rel="noreferrer">Streamlit</a> · <a href="https://github.com/texworld/betterbib/pull/142" target="_blank" rel="noreferrer">BetterBib</a> · <a href="https://github.com/inception-project/framenet-tools/pull/22" target="_blank" rel="noreferrer">framenet-tools</a> · <a href="https://github.com/girishponkiya/ProbCog/pull/1" target="_blank" rel="noreferrer">ProbCog</a> · <a href="https://github.com/sebastianruder/NLP-progress/issues/217" target="_blank" rel="noreferrer">NLP-progress (proposed noun compound task)</a></p>
+      </div>
+    </div>
+
+    <div class="footer-note">&copy; Girishkumar Ponkiya</div>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const themeButton = document.getElementById('theme-toggle');
+    const themeIcon = themeButton.querySelector('i');
+    const CURRENT_LAYOUT = 'ios2';
+    const LAYOUTS = {
+      a: 'option-a-terminal.html',
+      b: 'option-b-academic.html',
+      c: 'option-c-glass.html',
+      d: 'option-d-split.html',
+      e: 'option-e-sidebar-glass.html',
+      f: 'option-f-split-glass.html',
+      g: 'option-g-sidebar-flat.html',
+      ios: 'option-ios.html',
+      ios2: 'option-ios-v2.html'
+    };
+
+    function systemTheme() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      themeButton.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    applyTheme(savedTheme || systemTheme());
+
+    // Cards toggle
+    const cardsButton = document.getElementById('cards-toggle');
+    const cardsIcon = cardsButton.querySelector('i');
+    function applyCards(tinted) {
+      root.setAttribute('data-style', tinted ? 'tinted' : 'clear');
+      cardsIcon.className = tinted ? 'fa-solid fa-droplet' : 'fa-solid fa-droplet-slash';
+      cardsButton.title = tinted ? 'Switch to clear' : 'Switch to tinted';
+      cardsButton.classList.toggle('active', !tinted);
+    }
+    const savedStyle = localStorage.getItem('style');
+    applyCards(savedStyle !== 'clear');
+    cardsButton.addEventListener('click', () => {
+      const next = root.getAttribute('data-style') !== 'clear';
+      localStorage.setItem('style', next ? 'clear' : 'tinted');
+      applyCards(!next);
+    });
+
+    themeButton.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    document.querySelectorAll('.layout-btn').forEach((button) => {
+      if (button.dataset.layout === CURRENT_LAYOUT) button.classList.add('active');
+      button.addEventListener('click', () => {
+        const next = button.dataset.layout;
+        if (next === CURRENT_LAYOUT) return;
+        localStorage.setItem('layout', next);
+        window.location.href = LAYOUTS[next];
+      });
+    });
+  </script>
+</body>
+</html>
