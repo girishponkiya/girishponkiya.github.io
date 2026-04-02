@@ -982,15 +982,7 @@
 
   <!-- Controls toolbar -->
   <div class="controls" role="toolbar" aria-label="Layout and theme controls">
-    <button class="layout-btn" data-layout="a" title="Terminal">A</button>
-    <button class="layout-btn" data-layout="b" title="Academic">B</button>
-    <button class="layout-btn" data-layout="c" title="Glass">C</button>
-    <button class="layout-btn" data-layout="d" title="Split">D</button>
-    <button class="layout-btn" data-layout="e" title="Sidebar Glass">E</button>
-    <button class="layout-btn" data-layout="f" title="Split Glass">F</button>
-    <button class="layout-btn" data-layout="g" title="Sidebar Flat">G</button>
-    <button class="layout-btn" data-layout="ios" title="iOS"><i class="fa-brands fa-apple"></i></button>
-    <button class="layout-btn" data-layout="ios2" title="iOS v2 — liquid glass"><i class="fa-brands fa-apple"></i>2</button>
+    <a class="layout-btn" href="/themes" title="Browse themes"><i class="fa-solid fa-palette"></i></a>
     <div class="ctrl-divider"></div>
     <button class="theme-toggle" id="cards-toggle" title="Clear" aria-label="Toggle clear/tinted">
       <i class="fa-solid fa-droplet"></i>
@@ -1258,19 +1250,6 @@
     const root = document.documentElement;
     const themeButton = document.getElementById('theme-toggle');
     const themeIcon = themeButton.querySelector('i');
-    const CURRENT_LAYOUT = 'ios2';
-    const LAYOUTS = {
-      a: 'option-a-terminal.html',
-      b: 'option-b-academic.html',
-      c: 'option-c-glass.html',
-      d: 'option-d-split.html',
-      e: 'option-e-sidebar-glass.html',
-      f: 'option-f-split-glass.html',
-      g: 'option-g-sidebar-flat.html',
-      ios: 'option-ios.html',
-      ios2: 'option-ios-v2.html'
-    };
-
     function systemTheme() {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
@@ -1307,15 +1286,6 @@
       applyTheme(nextTheme);
     });
 
-    document.querySelectorAll('.layout-btn').forEach((button) => {
-      if (button.dataset.layout === CURRENT_LAYOUT) button.classList.add('active');
-      button.addEventListener('click', () => {
-        const next = button.dataset.layout;
-        if (next === CURRENT_LAYOUT) return;
-        localStorage.setItem('layout', next);
-        window.location.href = LAYOUTS[next];
-      });
-    });
   </script>
 </body>
 </html>
