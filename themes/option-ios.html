@@ -110,7 +110,7 @@
 
     html {
       scroll-behavior: smooth;
-      background: url('images/back-ground.jpg') center / cover no-repeat fixed;
+      background: url('../images/back-ground.jpg') center / cover no-repeat fixed;
       background-color: var(--bg);
     }
 
@@ -216,7 +216,7 @@
     .profile-wallpaper {
       position: relative;
       height: 180px;
-      background: url('images/back-ground.jpg') 48% 68% / cover no-repeat;
+      background: url('../images/back-ground.jpg') 48% 68% / cover no-repeat;
     }
 
     .profile-wallpaper::after {
@@ -745,6 +745,8 @@
     <button class="layout-btn" data-layout="g" title="Sidebar Flat">G</button>
     <button class="layout-btn" data-layout="ios" title="iOS">iOS</button>
     <div class="ctrl-divider"></div>
+    <button class="layout-btn" data-layout="home" title="Home"><i class="fa-solid fa-house"></i></button>
+    <div class="ctrl-divider"></div>
     <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
       <i class="fa-solid fa-moon"></i>
     </button>
@@ -756,7 +758,7 @@
       <div class="profile-wallpaper"></div>
       <div class="profile-content">
         <div class="profile-avatar">
-          <img src="images/profile.jpeg" alt="Girishkumar Ponkiya">
+          <img src="../images/profile.jpeg" alt="Girishkumar Ponkiya">
         </div>
         <div class="profile-info">
           <div class="profile-name">Girishkumar Ponkiya</div>
@@ -771,7 +773,7 @@
         <a href="https://scholar.google.co.in/citations?user=ubXkRzcAAAAJ" target="_blank" rel="noreferrer" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
         <a href="https://medium.com/@girishponkiya" target="_blank" rel="noreferrer" title="Medium"><i class="fa-brands fa-medium"></i></a>
         <a href="mailto:girish.isical@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
-        <a href="CV.pdf" target="_blank" rel="noreferrer" title="Curriculum Vitae (PDF)"><i class="fa-regular fa-file-pdf"></i></a>
+        <a href="../CV.pdf" target="_blank" rel="noreferrer" title="Curriculum Vitae (PDF)"><i class="fa-regular fa-file-pdf"></i></a>
       </div>
       <div class="profile-meta">
         <span class="meta-pill"><i class="fa-solid fa-location-dot"></i>Mumbai, India</span>
@@ -1005,7 +1007,8 @@
       e: 'option-e-sidebar-glass.html',
       f: 'option-f-split-glass.html',
       g: 'option-g-sidebar-flat.html',
-      ios: 'option-ios.html'
+      ios: 'option-ios.html',
+      home: '/',
     };
 
     function systemTheme() {

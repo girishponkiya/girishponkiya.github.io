@@ -205,7 +205,7 @@
     html {
       scroll-behavior: smooth;
       /* Background image on the root — fixed so it stays put while content scrolls */
-      background: url('images/back-ground.jpg') center / cover no-repeat fixed;
+      background: url('../images/back-ground.jpg') center / cover no-repeat fixed;
       background-color: var(--bg); /* solid fallback if image fails */
     }
 
@@ -353,7 +353,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('images/back-ground.jpg') 48% 68% / cover no-repeat;
+      background: url('../images/back-ground.jpg') 48% 68% / cover no-repeat;
       z-index: -2;
     }
 
@@ -1183,6 +1183,9 @@
     <button class="layout-btn" data-layout="e" title="Sidebar Glass">E</button>
     <button class="layout-btn" data-layout="f" title="Split Glass">F</button>
     <button class="layout-btn" data-layout="g" title="Sidebar Flat">G</button>
+    <button class="layout-btn" data-layout="ios" title="iOS">iOS</button>
+    <div class="ctrl-divider"></div>
+    <button class="layout-btn" data-layout="home" title="Home"><i class="fa-solid fa-house"></i></button>
     <div class="ctrl-divider"></div>
     <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
       <i class="fa-solid fa-moon"></i>
@@ -1205,7 +1208,7 @@
     <aside class="sidebar" aria-label="Profile sidebar">
       <div class="sidebar-profile">
         <div class="sidebar-avatar">
-          <img src="images/profile.jpeg" alt="Girishkumar Ponkiya">
+          <img src="../images/profile.jpeg" alt="Girishkumar Ponkiya">
         </div>
         <div class="sidebar-id">
           <div class="sidebar-name">Girishkumar Ponkiya</div>
@@ -1215,7 +1218,7 @@
             <a href="https://stackoverflow.com/users/1726226" target="_blank" rel="noreferrer" title="Stack Overflow"><i class="fa-brands fa-stack-overflow"></i></a>
             <a href="https://scholar.google.co.in/citations?user=ubXkRzcAAAAJ" target="_blank" rel="noreferrer" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
             <a href="mailto:girish.isical@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
-            <a href="CV.pdf" target="_blank" rel="noreferrer" title="Curriculum Vitae (PDF)"><i class="fa-regular fa-file-pdf"></i></a>
+            <a href="../CV.pdf" target="_blank" rel="noreferrer" title="Curriculum Vitae (PDF)"><i class="fa-regular fa-file-pdf"></i></a>
           </div>
         </div>
       </div>
@@ -1255,7 +1258,7 @@
                 <a href="https://scholar.google.co.in/citations?user=ubXkRzcAAAAJ" target="_blank" rel="noreferrer" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
                 <a href="https://medium.com/@girishponkiya" target="_blank" rel="noreferrer" title="Medium"><i class="fa-brands fa-medium"></i></a>
                 <a href="mailto:girish.isical@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
-                <a href="CV.pdf" target="_blank" rel="noreferrer" title="Curriculum Vitae (PDF)"><i class="fa-regular fa-file-pdf"></i></a>
+                <a href="../CV.pdf" target="_blank" rel="noreferrer" title="Curriculum Vitae (PDF)"><i class="fa-regular fa-file-pdf"></i></a>
               </div>
               <div class="status-strip">
                 <span class="contact-inline">
@@ -1505,7 +1508,9 @@
       d: 'option-d-split.html',
       e: 'option-e-sidebar-glass.html',
       f: 'option-f-split-glass.html',
-      g: 'option-g-sidebar-flat.html'
+      g: 'option-g-sidebar-flat.html',
+      ios: 'option-ios.html',
+      home: '/',
     };
 
     function systemTheme() {
