@@ -28,7 +28,7 @@
 ## Content — Correctness & Consistency
 
 - [x] **Fix role line** — change to `Data Scientist (Vice President) · Applied AI & NLP` (functional role first, seniority in parens).
-- [ ] **Expand TRDDC abbreviation** — `(TRDDC, TCS Research)` is opaque outside Indian academia; change to `Tata Research Development and Design Centre (TRDDC), TCS Research` on first use (line 235); keep abbreviation on second use (line 248).
+- [x] **Expand TRDDC abbreviation** — `(TRDDC, TCS Research)` is opaque outside Indian academia; change to `Tata Research Development and Design Centre (TRDDC), TCS Research` on first use (line 235); keep abbreviation on second use (line 248).
 - [ ] **Remove stale citation count** — remove `~56 citations` from the scholar link line; keep just the Google Scholar link.
 - [n/a] **Clarify arXiv authorship** — skipping; not a priority.
 - [ ] **Clarify UnFound role** — restructure the entry as: title · `Mumbai, India · Dec 2018 – Jun 2019 · Part-time` (subtitle) · meta: `Part-time engagement during PhD research, taken deliberately to gain industry exposure and bridge the transition from academia to applied ML.` · body: existing two bullet points (BERT QA pipeline, multi-task stance detection). Keep title as "Machine Learning Consultant".
