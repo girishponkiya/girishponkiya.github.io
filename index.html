@@ -91,7 +91,7 @@
   <div class="ios-stack">
 
     <!-- Profile widget -->
-    <div class="ios-card profile-widget" id="about">
+    <div class="ios-card profile-widget" id="profile">
       <div class="profile-content">
         <div class="profile-avatar">
           <img src="images/profile.jpeg" alt="Girishkumar Ponkiya">
@@ -113,13 +113,13 @@
       </div>
       <div class="profile-meta">
         <span class="meta-pill"><i class="fa-solid fa-graduation-cap"></i> Ph.D. · IIT Bombay</span>
-        <span class="meta-pill"><i class="fa-solid fa-file-lines"></i> ACL · EMNLP · COLING</span>
+        <span class="meta-pill"><i class="fa-solid fa-file-lines"></i> ACL · EMNLP · COLING · LREC</span>
         <span class="meta-pill"><i class="fa-solid fa-microchip"></i> NLP &amp; LLM Systems</span>
       </div>
     </div>
 
     <!-- About -->
-    <div class="ios-card">
+    <div class="ios-card" id="about">
       <div class="glass-layer" aria-hidden="true"></div>
       <div class="ios-card-body">
         <div class="section-header">
@@ -127,8 +127,8 @@
           <div class="section-title">Applied AI meets research rigour.</div>
         </div>
         <p class="prose">As an AI/ML specialist at <strong>ISS STOXX's Technology Innovation Lab</strong>, I work on LLM infrastructure and NLP pipelines — from deploying and optimising models on internal GPU infrastructure to building systems that process ~700K news articles daily across 10+ languages for ESG controversy monitoring.</p>
-        <p class="prose">My doctoral research at <strong>IIT Bombay</strong> on <em>Noun Compound Interpretation</em> addressed two complementary aspects: <em>automatic interpretation</em> — uncovering implicit semantic relations between nouns through supervised LSTM paraphrasing and unsupervised approaches with BERT/RoBERTa and T5 (the latter outperforming prior supervised baselines) — and a <em>linguistic contribution</em> proposing FrameNet-based semantic labels, demonstrating that FrameNet data can generalize label sets and enable models to handle unseen relation labels. This work was published at ACL, EMNLP, and COLING.</p>
-        <p class="prose">I also design and deliver a company-wide <strong>"Introduction to LLM for Software Developers"</strong> workshop series (~70 participants per session), contribute to open source NLP tooling (Hugging Face Transformers, spaCy ecosystem), and have open-sourced a <a href="https://github.com/iss-lab/vllm-dashboard" target="_blank" rel="noreferrer">vLLM monitoring dashboard</a> built on Telegraf, InfluxDB, and Grafana.</p>
+        <p class="prose">My doctoral research at <strong>IIT Bombay</strong> on <em>Noun Compound Interpretation</em> addressed two complementary aspects: <em>automatic interpretation</em> — uncovering implicit semantic relations between nouns through supervised LSTM paraphrasing and unsupervised approaches with BERT/RoBERTa and T5 — both outperforming their respective supervised baselines — and a <em>linguistic contribution</em> proposing FrameNet-based semantic labels, demonstrating that FrameNet data can generalize label sets and enable models to handle unseen relation labels. This work was published at ACL, EMNLP, COLING, and LREC.</p>
+        <p class="prose">I also design and deliver a company-wide <strong>"Introduction to LLM for Software Developers"</strong> workshop series (~70 participants per session) and advise internal teams on AI use-case design and implementation, contribute to open source NLP tooling (Hugging Face Transformers), and have open-sourced a <a href="https://github.com/iss-lab/vllm-dashboard" target="_blank" rel="noreferrer">vLLM monitoring dashboard</a> built on Telegraf, InfluxDB, and Grafana.</p>
       </div>
     </div>
 
@@ -146,9 +146,9 @@
             <div class="ios-row-subtitle">Mumbai, India · Mar 2021 – Present</div>
             <div class="ios-row-meta">Individual contributor; cross-functional AI advisor. Associate Vice President (Mar 2021 – Dec 2025) → Vice President (Jan 2026 – Present).</div>
             <div class="ios-row-body">
-              <strong>NLP &amp; ESG pipelines:</strong> Built and own the news filtering pipeline (NER, entity linking, relevance scoring) processing ~700K articles/day across 10+ languages — relevance rate grew from ~2% to ~35% over 4 years.<br>
+              <strong>NLP &amp; ESG pipelines:</strong> Built and maintain the NLP components of the news filtering pipeline (NER, entity linking, relevance scoring) — the pipeline processes ~700K articles/day across 10+ languages; relevance rate grew from ~2% to ~35% over 4 years.<br>
               <strong>LLM infrastructure:</strong> Deployed multiple LLMs on internal GPU infrastructure using vLLM with production-grade optimisations. Built and open-sourced the <a href="https://github.com/iss-lab/vllm-dashboard" target="_blank" rel="noreferrer">vllm-dashboard</a> monitoring stack.<br>
-              <strong>AI enablement:</strong> Delivering a company-wide "Introduction to LLM for Software Developers" workshop series (~70 participants/session).<br>
+              <strong>AI enablement:</strong> Delivering a company-wide "Introduction to LLM for Software Developers" workshop series (~70 participants/session); advising internal dev teams on AI use-case design and implementation.<br>
               <strong>Index products:</strong> Leading AI-driven thematic index and sentiment index initiatives for STOXX.
             </div>
             <details>
@@ -200,7 +200,7 @@
           </div>
         </div>
         <div class="skill-category">
-          <div class="skill-category-label">LLM Infrastructure</div>
+          <div class="skill-category-label">Infrastructure &amp; Systems</div>
           <div class="tag-cloud">
             <span class="tag tag-infra">vLLM</span>
             <span class="tag tag-infra">Grafana / Telegraf / InfluxDB</span>
@@ -208,9 +208,6 @@
             <span class="tag tag-infra">Apache NiFi</span>
             <span class="tag tag-infra">Vespa</span>
             <span class="tag tag-infra">Docling</span>
-            <span class="tag tag-infra">Memgraph</span>
-            <span class="tag tag-infra">CoreNLP</span>
-            <span class="tag tag-infra">Diffbot</span>
           </div>
         </div>
         <div class="skill-category">
@@ -220,6 +217,8 @@
             <span class="tag tag-frameworks">PyTorch</span>
             <span class="tag tag-frameworks">Hugging Face Transformers</span>
             <span class="tag tag-frameworks">spaCy</span>
+            <span class="tag tag-frameworks">CoreNLP</span>
+            <span class="tag tag-frameworks">Diffbot</span>
             <span class="tag tag-frameworks">scikit-learn</span>
             <span class="tag tag-frameworks">Java</span>
             <span class="tag tag-frameworks">SQL</span>
