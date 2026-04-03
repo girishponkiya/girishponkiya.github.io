@@ -32,7 +32,7 @@
 - [x] **Remove stale citation count** — remove `~56 citations` from the scholar link line; keep just the Google Scholar link.
 - [n/a] **Clarify arXiv authorship** — skipping; not a priority.
 - [x] **Clarify UnFound role** — restructure the entry as: title · `Mumbai, India · Dec 2018 – Jun 2019 · Part-time` (subtitle) · meta: `Part-time engagement during PhD research, taken deliberately to gain industry exposure and bridge the transition from academia to applied ML.` · body: existing two bullet points (BERT QA pipeline, multi-task stance detection). Keep title as "Machine Learning Consultant".
-- [ ] **Add missing skills** — add Docling and Memgraph to "LLM Infrastructure"; add CoreNLP and Diffbot to a new fourth category **"Tools & Integrations"** (production NLP tools/APIs, not languages or frameworks).
+- [x] **Add missing skills** — add Docling and Memgraph to "LLM Infrastructure"; add CoreNLP and Diffbot to a new fourth category **"Tools & Integrations"** (production NLP tools/APIs, not languages or frameworks).
 - [x] **Clarify NLP-progress link** — already done; label reads `NLP-progress (proposed noun compound task)`.
 - [ ] **Update tagline** — two shortlisted options (pick one):
   - `From Research to Production: Teaching Machines · Training Developers` (retains original wit, adds the arc)
