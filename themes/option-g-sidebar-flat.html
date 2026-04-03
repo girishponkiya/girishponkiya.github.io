@@ -1176,6 +1176,7 @@
 <body>
   <!-- Controls: layout switcher, theme, glass style -->
   <div class="controls" role="toolbar" aria-label="Layout and theme controls">
+    <button class="layout-btn" data-layout="ios" title="iOS"><i class="fa-brands fa-apple"></i></button>
     <button class="layout-btn" data-layout="a" title="Terminal">A</button>
     <button class="layout-btn" data-layout="b" title="Academic">B</button>
     <button class="layout-btn" data-layout="c" title="Glass">C</button>
@@ -1183,7 +1184,6 @@
     <button class="layout-btn" data-layout="e" title="Sidebar Glass">E</button>
     <button class="layout-btn" data-layout="f" title="Split Glass">F</button>
     <button class="layout-btn" data-layout="g" title="Sidebar Flat">G</button>
-    <button class="layout-btn" data-layout="ios" title="iOS">iOS</button>
     <div class="ctrl-divider"></div>
     <button class="layout-btn" data-layout="home" title="Home"><i class="fa-solid fa-house"></i></button>
     <div class="ctrl-divider"></div>
@@ -1544,7 +1544,6 @@
       button.addEventListener('click', () => {
         const next = button.dataset.layout;
         if (next === CURRENT_LAYOUT) return;
-        localStorage.setItem('layout', next);
         window.location.href = LAYOUTS[next];
       });
     });
