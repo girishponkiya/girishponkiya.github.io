@@ -42,11 +42,11 @@
 
 ## Visuals & Layout
 
-- [ ] **Increase profile avatar size on desktop** — currently 100×100px; increase to ~116px on desktop via media query for better visual weight relative to the name block.
+- [x] **Increase profile avatar size on desktop** — currently 100×100px; increase to ~116px on desktop via media query for better visual weight relative to the name block.
 - [ ] **Fix clear mode text readability** — in `[data-style="clear"]`, body text over a complex wallpaper can lose contrast. Add a subtle `text-shadow` on prose or increase `--page-overlay` opacity slightly.
-- [ ] **Improve "Detailed contributions" label** in Experience — it's generic. Change to something like `Technical contributions (NER · LLM · Knowledge Graphs)` so users know what they'll see before expanding.
-- [ ] **Add tooltips to publication venue badges** — recruiters and non-NLP readers won't know what ACL or EMNLP are. Add `title="Annual Conference of the ACL — top-tier NLP venue"` (etc.) to each badge.
-- [ ] **Improve Skills section subtitle** — `Technical toolkit.` is noticeably shorter and flatter than the others (`Applied AI meets research rigour.`, `From research to production AI.`). Try `Tools that shape the work.` or `Where theory meets tooling.`
+- [x] **Improve "Detailed contributions" label** in Experience — it's generic. Change to something like `Technical contributions (NER · LLM · Knowledge Graphs)` so users know what they'll see before expanding.
+- [x] **Add tooltips to publication venue badges** — recruiters and non-NLP readers won't know what ACL or EMNLP are. Add `title="Annual Conference of the ACL — top-tier NLP venue"` (etc.) to each badge.
+- [x] **Improve Skills section subtitle** — `Technical toolkit.` is noticeably shorter and flatter than the others (`Applied AI meets research rigour.`, `From research to production AI.`). Try `Tools that shape the work.` or `Where theory meets tooling.`
 - [ ] **Add "Themes" label to the toolbar button on desktop** — the palette icon has no visible text; a short label would make the control self-explanatory without a tooltip.
 - [ ] **Add scroll-to-top on mobile** — once scrolled to Publications/Projects there is no quick return; a small floating button (or tapping the controls bar) would help.
 - [ ] **Consider in-page navigation** — sections have `id` anchors but no nav. A minimal sticky pill-nav above the stack (desktop only) would help longer-form readers.
