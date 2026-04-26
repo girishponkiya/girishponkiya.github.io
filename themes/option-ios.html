@@ -817,7 +817,8 @@
               <summary><span>Detailed contributions</span><i class="fa-solid fa-chevron-down"></i></summary>
               <div class="detail-content">
                 <ul>
-                  <li>Evaluated 5 NER tools against internal ESG data; integrated spaCy, CoreNLP, and Diffbot into the production NiFi pipeline. NER model P/R/F consistently above 85%.</li>
+                  <li>Evaluated 5 NER tools against internal ESG data; integrated spaCy, CoreNLP, and Diffbot into the production NiFi pipeline.</li>
+                  <li>Improved the pipeline's relevance classifier from 82%+ to 85%+ accuracy by replacing a spaCy-based component with a tuned scikit-learn model (feature engineering + hyperparameter search).</li>
                   <li>Contributed to Japanese-language expansion raising relevance from ~9% to ~33%.</li>
                   <li>Devised a novel threshold identification approach enabling mathematical confidence bounds on relevance and false positive rates — previously unmeasurable.</li>
                   <li>Redesigned entity linking around a Memgraph knowledge graph for better adaptability to dynamic entity universes.</li>
