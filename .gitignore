@@ -1,2 +1,11 @@
 .DS_Store
 tmp/
+.claude/
+PLAN.md
+TODO-from-ollama.md
+consistency-review.md
+option-g-ideas.md
+images/background_bold.png
+images/background_teal.png
+images/background_blurry.png
+images/1325192.jpg
