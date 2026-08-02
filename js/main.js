@@ -199,4 +199,11 @@
       delete detail.dataset.wasOpen;
     });
   });
+
+  // Dynamic aria-expanded accessibility sync for details accordions
+  document.querySelectorAll('details').forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+      detail.setAttribute('aria-expanded', detail.open);
+    });
+  });
 })();
