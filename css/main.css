@@ -385,6 +385,15 @@
       pointer-events: none;
     }
 
+    @supports (background: linear-gradient(in oklab, red, blue)) {
+      .glass-layer::after {
+        background: linear-gradient(180deg in oklch, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 32%, transparent 64%);
+      }
+      [data-theme="dark"] .glass-layer::after {
+        background: linear-gradient(180deg in oklch, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 32%, transparent 64%);
+      }
+    }
+
     /* All card content must sit above the glass layer */
     .ios-card-body {
       position: relative;
