@@ -1037,3 +1037,398 @@
         font-size: 0.82rem;
       }
     }
+
+    /* ── Rendered Markdown Print Stylesheet (Exact 3-Page High-Density PDF CV) ── */
+    @media print {
+      /* 1. Global CSS variable override for print */
+      :root, [data-theme="dark"], [data-theme="light"] {
+        --text: #000000 !important;
+        --text-secondary: #1a1a1a !important;
+        --text-tertiary: #444444 !important;
+        --text-quaternary: #666666 !important;
+        --accent: #0052cc !important;
+        --separator: #d8dee4 !important;
+        --tag-bg: #f3f4f6 !important;
+        --tag-text: #1a1a1a !important;
+      }
+
+      /* Ultra-clean 8mm top/bottom, 9mm left/right margin for exact 3-page fit */
+      @page {
+        margin: 8mm 9mm;
+      }
+
+      /* Force exact color rendering */
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Hide interactive UI controls, wallpaper, and SVG filters */
+      .controls, .fab-nav, .blur-bg, svg {
+        display: none !important;
+      }
+
+      /* Global page reset & 100% width fill */
+      html, body {
+        background: #ffffff !important;
+        color: #111111 !important;
+        text-shadow: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 0.81rem !important;
+        line-height: 1.42 !important;
+      }
+
+      /* Container stack density tuning */
+      .ios-stack {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 8px !important;
+      }
+
+      /* 2. Profile Header Card — Compact & clean */
+      .profile-widget {
+        background: #f8f9fa !important;
+        border: 1px solid #d8dee4 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+        padding: 10px 12px !important;
+        margin: 0 0 8px 0 !important;
+        width: 100% !important;
+        min-height: auto !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .profile-widget::before,
+      .profile-widget::after {
+        display: none !important;
+        content: none !important;
+      }
+
+      .profile-content {
+        padding: 0 !important;
+      }
+
+      .profile-avatar {
+        width: 58px !important;
+        height: 58px !important;
+        border-radius: 14px !important;
+        border: 1px solid #d8dee4 !important;
+        box-shadow: none !important;
+      }
+
+      .profile-name {
+        color: #000000 !important;
+        font-size: 1.30rem !important;
+      }
+
+      .profile-role {
+        color: #222222 !important;
+        font-size: 0.82rem !important;
+      }
+
+      .profile-tagline {
+        color: #444444 !important;
+        font-size: 0.78rem !important;
+      }
+
+      .profile-links {
+        padding: 4px 0 0 0 !important;
+        gap: 8px !important;
+      }
+
+      .profile-links a {
+        background: #edf2f7 !important;
+        border: 1px solid #d8dee4 !important;
+        color: #0052cc !important;
+        width: 26px !important;
+        height: 26px !important;
+        border-radius: 7px !important;
+        font-size: 0.82rem !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      .profile-meta {
+        padding: 5px 0 0 0 !important;
+        gap: 4px !important;
+      }
+
+      .meta-pill {
+        background: #edf2f7 !important;
+        color: #222222 !important;
+        border: 1px solid #d8dee4 !important;
+        font-size: 0.70rem !important;
+        padding: 2px 6px !important;
+        border-radius: 5px !important;
+      }
+
+      .meta-pill i {
+        color: #0052cc !important;
+        font-size: 0.66rem !important;
+      }
+
+      /* 3. Rendered Markdown Section Cards */
+      .glass-layer {
+        display: none !important;
+      }
+
+      .ios-card {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 0 8px 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+      }
+
+      .ios-card-body {
+        padding: 0 !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+      }
+
+      /* Section Headings — like Markdown ## H2 (Locked together & tethered to first content item) */
+      .section-header {
+        border-bottom: 1px solid #d8dee4 !important;
+        padding-bottom: 2px !important;
+        margin-bottom: 6px !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid-page !important;
+      }
+
+      .section-label {
+        display: block !important;
+        font-size: 0.70rem !important;
+        font-weight: 700 !important;
+        color: #0052cc !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.06em !important;
+        margin-bottom: 1px !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      .section-title {
+        font-size: 1.05rem !important;
+        color: #000000 !important;
+        font-weight: 700 !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      /* Skill categories stay grouped */
+      .skill-category {
+        padding: 6px 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .skill-category-label {
+        color: #222222 !important;
+        font-weight: 700 !important;
+        font-size: 0.70rem !important;
+        margin-bottom: 4px !important;
+      }
+
+      .tag-cloud {
+        gap: 4px !important;
+      }
+
+      .tag {
+        border: 1px solid #d8dee4 !important;
+        background: #f6f8fa !important;
+        color: #1a1a1a !important;
+        padding: 2px 7px !important;
+        font-size: 0.74rem !important;
+        border-radius: 5px !important;
+      }
+
+      /* Section Content — Markdown prose, bullet lists, and formatted text */
+      p, li, div, span, label {
+        color: #1a1a1a !important;
+      }
+
+      .prose, .ios-row-body, .detail-content, .detail-content p, .detail-content li {
+        color: #1a1a1a !important;
+        font-size: 0.81rem !important;
+        line-height: 1.42 !important;
+      }
+
+      .prose {
+        margin-bottom: 5px !important;
+      }
+
+      strong, b {
+        color: #000000 !important;
+        font-weight: 700 !important;
+      }
+
+      em {
+        color: #111111 !important;
+        font-style: italic !important;
+      }
+
+      /* Font Awesome icons upright */
+      i, [class*="fa-"] {
+        font-style: normal !important;
+      }
+
+      .ios-row-title {
+        color: #000000 !important;
+        font-size: 0.90rem !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      .ios-row-subtitle, .ios-row-meta {
+        color: #555555 !important;
+        font-size: 0.76rem !important;
+      }
+
+      .ios-inner-card {
+        background: #f6f8fa !important;
+        border: 1px solid #d8dee4 !important;
+        box-shadow: none !important;
+        padding: 6px 8px !important;
+        margin-top: 5px !important;
+        border-radius: 5px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .ios-row-meta + .ios-inner-card,
+      .award-badge + .ios-inner-card {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+      }
+
+      .award-badge {
+        margin-top: 3px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .award-badge span {
+        color: #1a1a1a !important;
+        font-size: 0.78rem !important;
+      }
+
+      /* Keep individual degree/job rows intact */
+      .ios-row {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        padding: 6px 0 !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+      }
+
+      /* Remove dotted underlines on summary headers */
+      details {
+        display: block !important;
+        margin-top: 4px !important;
+      }
+
+      summary {
+        display: block !important;
+        color: #000000 !important;
+        font-weight: 650 !important;
+        margin-bottom: 3px !important;
+        text-decoration: none !important;
+        border-bottom: none !important;
+      }
+
+      summary span {
+        color: #000000 !important;
+        font-weight: 650 !important;
+        text-decoration: none !important;
+      }
+
+      summary i {
+        display: none !important;
+      }
+
+      .detail-content {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        opacity: 1 !important;
+        margin-top: 4px !important;
+        padding-left: 12px !important;
+        padding-right: 8px !important;
+        border-left: 2px solid #d8dee4 !important;
+        color: #1a1a1a !important;
+      }
+
+      .detail-content ul {
+        padding-left: 14px !important;
+        gap: 2px !important;
+        color: #1a1a1a !important;
+      }
+
+      .detail-content li {
+        color: #1a1a1a !important;
+        line-height: 1.40 !important;
+      }
+
+      /* Publication List & External Links */
+      .pub-item {
+        padding: 6px 0 !important;
+        color: #1a1a1a !important;
+        font-size: 0.80rem !important;
+      }
+
+      .pub-item a {
+        color: #0052cc !important;
+        opacity: 1 !important;
+      }
+
+      .pub-item a i {
+        font-size: 0.66rem !important;
+      }
+
+      .venue-badge {
+        border: 1px solid #d8dee4 !important;
+        background: #f6f8fa !important;
+        color: #1a1a1a !important;
+        padding: 1px 4px !important;
+        font-size: 0.66rem !important;
+      }
+
+      /* @page counters for PDF printing */
+      @page {
+        margin: 8mm 9mm 12mm 9mm;
+        @bottom-right {
+          content: "Page " counter(page) " of " counter(pages);
+          font-size: 0.68rem;
+          color: #666666;
+          font-family: system-ui, -apple-system, sans-serif;
+        }
+      }
+
+      /* Restored copyright line at document end */
+      .footer-note {
+        display: block !important;
+        text-align: center !important;
+        font-size: 0.72rem !important;
+        color: #666666 !important;
+        padding: 8px 0 0 0 !important;
+        margin-top: 12px !important;
+        border-top: 1px solid #d8dee4 !important;
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+      }
+    }

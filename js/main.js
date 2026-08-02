@@ -125,4 +125,78 @@
 
     sections.forEach((section) => sectionObserver.observe(section));
   }
+
+  // Print date formatting: d/Mon/yyyy hh:mm am/pm "timezone" (e.g. 2/Aug/2026 03:56 pm IST)
+  function getFormattedPrintDate() {
+    const now = new Date();
+    const day = now.getDate();
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = monthNames[now.getMonth()];
+    const year = now.getFullYear();
+
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const formattedHours = String(hours).padStart(2, '0');
+
+    let timeZone = '';
+    try {
+      const parts = new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' }).formatToParts(now);
+      const tzPart = parts.find(p => p.type === 'timeZoneName');
+      timeZone = tzPart ? tzPart.value : '';
+
+      const tzMap = {
+        'GMT+5:30': 'IST', 'UTC+5:30': 'IST',
+        'GMT-5': 'EST',    'UTC-5': 'EST',
+        'GMT-8': 'PST',    'UTC-8': 'PST',
+        'GMT+1': 'CET',    'UTC+1': 'CET',
+        'GMT+9': 'JST',    'UTC+9': 'JST',
+        'GMT+0': 'UTC',    'UTC+0': 'UTC'
+      };
+      if (tzMap[timeZone]) timeZone = tzMap[timeZone];
+    } catch (e) {
+      timeZone = '';
+    }
+
+    return `${day}/${month}/${year} ${formattedHours}:${minutes} ${ampm} ${timeZone}`.trim();
+  }
+
+  // Print handler: Automatically expand all <details> accordions and set true @page bottom-left margin box date
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('details').forEach((detail) => {
+      detail.dataset.wasOpen = detail.open;
+      detail.open = true;
+    });
+
+    const formattedDate = getFormattedPrintDate();
+    let printStyle = document.getElementById('dynamic-print-style');
+    if (!printStyle) {
+      printStyle = document.createElement('style');
+      printStyle.id = 'dynamic-print-style';
+      document.head.appendChild(printStyle);
+    }
+    printStyle.textContent = `
+      @media print {
+        @page {
+          @bottom-left {
+            content: "Printed: ${formattedDate}";
+            font-size: 0.68rem;
+            color: #666666;
+            font-family: system-ui, -apple-system, sans-serif;
+          }
+        }
+      }
+    `;
+  });
+
+  window.addEventListener('afterprint', () => {
+    document.querySelectorAll('details').forEach((detail) => {
+      if (detail.dataset.wasOpen === 'false') {
+        detail.open = false;
+      }
+      delete detail.dataset.wasOpen;
+    });
+  });
 })();
