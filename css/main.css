@@ -146,6 +146,8 @@
       text-shadow: var(--text-shadow);
     }
 
+    h1, h2, h3 { margin: 0; font: inherit; }
+
     a { color: var(--accent); text-decoration: none; font-weight: 500; }
     a:hover { text-decoration: underline; }
 
