@@ -119,6 +119,7 @@
       filter: brightness(0.72) saturate(1.05);
       z-index: -1;
       pointer-events: none;
+      will-change: transform;
     }
 
     /* Light-mode: slightly brighter */
@@ -167,6 +168,7 @@
       box-shadow: var(--card-shadow);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
+      will-change: transform;
     }
 
     .layout-btn,
@@ -262,6 +264,10 @@
       filter: url(#liquid-glass);
       z-index: 0;
       pointer-events: none;
+    }
+
+    @supports not (backdrop-filter: blur(1px)) {
+      .glass-layer { background: var(--card-bg-strong); }
     }
 
     /* Specular gradient — top-bright catch light fading to nothing */
@@ -538,8 +544,8 @@
       background: var(--inner-card-bg);
       border: 1px solid var(--inner-card-border);
       box-shadow: inset 0 0.5px 0 var(--specular-top);
-      backdrop-filter: blur(24px) saturate(160%);
-      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      backdrop-filter: blur(8px) saturate(130%);
+      -webkit-backdrop-filter: blur(8px) saturate(130%);
     }
 
     /* ── Award badges ── */
@@ -850,6 +856,10 @@
 
     /* ── Responsive ── */
     @media (max-width: 720px) {
+      .glass-layer {
+        filter: none;
+      }
+
       .ios-stack {
         padding: 16px 10px 36px;
         gap: 12px;
