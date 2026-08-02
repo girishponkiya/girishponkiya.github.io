@@ -61,4 +61,68 @@
       applyCards(newTinted);
     });
   }
+
+  // Email obfuscation (Option B)
+  const emailLink = document.getElementById('email-link');
+  if (emailLink) {
+    const user = 'girish.isical';
+    const domain = 'gmail.com';
+    emailLink.href = 'mailto:' + user + '@' + domain;
+  }
+
+  // FAB Section Navigation logic
+  const fabNav = document.getElementById('fab-nav');
+  const fabBtn = document.getElementById('fab-btn');
+  const fabMenu = document.getElementById('fab-menu');
+  const profileCard = document.getElementById('profile');
+  const fabItems = document.querySelectorAll('.fab-item');
+  const sections = document.querySelectorAll('.ios-card[id]');
+
+  if (fabNav) {
+    fabNav.classList.add('visible');
+  }
+
+  // Toggle FAB menu
+  if (fabBtn && fabMenu) {
+    fabBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = fabMenu.classList.toggle('open');
+      fabBtn.classList.toggle('open', isOpen);
+    });
+
+    // Close menu when clicking outside or selecting an item
+    document.addEventListener('click', (e) => {
+      if (!fabNav.contains(e.target)) {
+        fabMenu.classList.remove('open');
+        fabBtn.classList.remove('open');
+      }
+    });
+
+    fabItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        fabMenu.classList.remove('open');
+        fabBtn.classList.remove('open');
+      });
+    });
+  }
+
+  // Active section highlighting
+  if (sections.length > 0 && fabItems.length > 0) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          fabItems.forEach((item) => {
+            if (item.getAttribute('href') === '#' + id) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
 })();

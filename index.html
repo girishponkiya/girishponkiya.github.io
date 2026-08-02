@@ -111,8 +111,6 @@
 
   <!-- Controls toolbar -->
   <div class="controls" role="toolbar" aria-label="Layout and theme controls">
-    <a class="layout-btn" href="/themes" title="Browse themes"><i class="fa-solid fa-palette"></i></a>
-    <div class="ctrl-divider"></div>
     <button class="theme-toggle" id="cards-toggle" title="Clear" aria-label="Toggle clear/tinted">
       <i class="fa-solid fa-droplet"></i>
     </button>
@@ -121,6 +119,21 @@
       <i class="fa-solid fa-moon"></i>
     </button>
   </div>
+
+  <!-- Floating Action Button (FAB) Section Navigation -->
+  <nav class="fab-nav" id="fab-nav" aria-label="Section navigation">
+    <div class="fab-menu" id="fab-menu">
+      <a href="#about" class="fab-item"><i class="fa-solid fa-user"></i> <span>About</span></a>
+      <a href="#experience" class="fab-item"><i class="fa-solid fa-briefcase"></i> <span>Experience</span></a>
+      <a href="#skills" class="fab-item"><i class="fa-solid fa-bolt"></i> <span>Skills</span></a>
+      <a href="#education" class="fab-item"><i class="fa-solid fa-graduation-cap"></i> <span>Education</span></a>
+      <a href="#publications" class="fab-item"><i class="fa-solid fa-file-lines"></i> <span>Publications</span></a>
+      <a href="#projects" class="fab-item"><i class="fa-solid fa-code"></i> <span>Projects</span></a>
+    </div>
+    <button class="fab-btn" id="fab-btn" title="Navigate sections" aria-label="Toggle section menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
 
   <main class="ios-stack">
 
@@ -145,10 +158,11 @@
         <a href="https://stackoverflow.com/users/1726226" target="_blank" rel="noreferrer" title="Stack Overflow"><i class="fa-brands fa-stack-overflow"></i></a>
         <a href="https://scholar.google.co.in/citations?user=ubXkRzcAAAAJ" target="_blank" rel="noreferrer" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
         <a href="https://medium.com/@girishponkiya" target="_blank" rel="noreferrer" title="Medium"><i class="fa-brands fa-medium"></i></a>
-        <a href="mailto:girish.isical@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="#" id="email-link" title="Email" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
         <a href="CV.pdf" target="_blank" rel="noreferrer" title="Curriculum Vitae (PDF)"><i class="fa-regular fa-file-pdf"></i></a>
       </div>
       <div class="profile-meta">
+        <span class="meta-pill"><i class="fa-solid fa-location-dot"></i> Mumbai, India</span>
         <span class="meta-pill"><i class="fa-solid fa-graduation-cap"></i> Ph.D. · IIT Bombay</span>
         <span class="meta-pill"><i class="fa-solid fa-file-lines"></i> ACL · EMNLP · COLING · LREC</span>
         <span class="meta-pill"><i class="fa-solid fa-microchip"></i> NLP &amp; LLM Systems</span>
