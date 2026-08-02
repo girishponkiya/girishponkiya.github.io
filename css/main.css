@@ -115,7 +115,7 @@
     .blur-bg {
       position: fixed;
       inset: 0;
-      background: url('../images/background_bold.jpg') center / cover no-repeat;
+      background: url('../images/background_bold.webp') center / cover no-repeat;
       filter: brightness(0.72) saturate(1.05);
       z-index: -1;
       pointer-events: none;
