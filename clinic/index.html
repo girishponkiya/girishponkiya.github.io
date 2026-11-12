@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Core Healing</title>
+<meta name="description" content="Core Healing clinic register">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#fbf6ea">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Core Healing">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.girishp.in/clinic-app-assets/icons/core-healing-icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://www.girishp.in/clinic-app-assets/icons/core-healing-icon-192.png">
+<link rel="icon" type="image/png" sizes="64x64" href="https://www.girishp.in/clinic-app-assets/icons/core-healing-favicon-64.png">
+<link rel="manifest" href="manifest.webmanifest">
+<script>
+  // Launched from the home-screen icon → go straight to the app.
+  // Opened in a normal browser tab → stay, so "Add to Home Screen" saves THIS page (logo + name).
+  var APP = "https://script.google.com/macros/s/AKfycbxBvJxb3HQCML1NJAHuZJ2DND9cV8RO_iQ9IepfTQVPuJ6v_vKGpRCwwsyyAXat4rIX1w/exec";
+  var launched = window.navigator.standalone === true ||
+    (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ||
+    /[?&]launch=1\b/.test(location.search);
+  if (launched) location.replace(APP);
+</script>
+<style>
+  :root { --bg: #fbf6ea; --ink: #1f2d1c; --muted: #6b6f5e; --accent: #2d5a27; --card: #fffdf7; --line: #ebe3cc; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #121a13; --ink: #ece6d6; --muted: #a8a892; --accent: #a9c98a; --card: #18221a; --line: #2c3a2d; } }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: "Trebuchet MS", system-ui, sans-serif; font-size: 15px; line-height: 1.5;
+         padding: max(28px, env(safe-area-inset-top)) 16px 32px; }
+  main { max-width: 420px; margin: 0 auto; text-align: center; }
+  img { width: 112px; height: 112px; border-radius: 24px; }
+  h1 { font-family: Georgia, serif; font-weight: 700; color: var(--accent); font-size: 24px; margin: 12px 0 4px; letter-spacing: .02em; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .open { display: block; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 700; padding: 14px; border-radius: 12px; font-size: 16px; }
+  .card { text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-top: 18px; }
+  .card h2 { font-size: 14px; margin: 0 0 6px; color: var(--accent); }
+  .card ol { margin: 0; padding-left: 20px; color: var(--ink); }
+  .note { color: var(--muted); font-size: 12px; margin-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <img src="https://www.girishp.in/clinic-app-assets/icons/core-healing-icon-180.png" alt="">
+  <h1>Core Healing</h1>
+  <p class="sub">Clinic visit &amp; payment register</p>
+  <a class="open" id="go" href="https://script.google.com/macros/s/AKfycbxBvJxb3HQCML1NJAHuZJ2DND9cV8RO_iQ9IepfTQVPuJ6v_vKGpRCwwsyyAXat4rIX1w/exec">Open Core Healing</a>
+
+  <div class="card" id="ios">
+    <h2>Add to Home Screen · iPhone (Safari)</h2>
+    <ol><li>Tap the <b>Share</b> button (square with arrow).</li><li>Choose <b>Add to Home Screen</b>.</li><li>Keep the name <b>Core Healing</b> and tap <b>Add</b>.</li></ol>
+  </div>
+  <div class="card" id="android">
+    <h2>Add to Home Screen · Android (Chrome)</h2>
+    <ol><li>Tap the <b>⋮</b> menu (top right).</li><li>Choose <b>Add to Home screen</b> (or <b>Install app</b>).</li><li>Tap <b>Add</b>.</li></ol>
+  </div>
+  <p class="note">The icon opens the app directly. Sign in with the Google account your clinic added.</p>
+</main>
+<script>
+  var ua = navigator.userAgent;
+  if (/iPhone|iPad|iPod/.test(ua)) document.getElementById("android").style.display = "none";
+  else if (/Android/.test(ua)) document.getElementById("ios").style.display = "none";
+</script>
+</body>
+</html>
