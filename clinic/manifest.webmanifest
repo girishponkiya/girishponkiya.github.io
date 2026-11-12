@@ -4,7 +4,7 @@
   "description": "Core Healing clinic register",
   "start_url": "./?launch=1",
   "scope": "./",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#fbf6ea",
   "theme_color": "#fbf6ea",
   "icons": [

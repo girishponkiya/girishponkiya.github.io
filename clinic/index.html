@@ -7,21 +7,19 @@
 <meta name="description" content="Core Healing clinic register">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#fbf6ea">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Core Healing">
 <link rel="apple-touch-icon" sizes="180x180" href="https://www.girishp.in/clinic-app-assets/icons/core-healing-icon-180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="https://www.girishp.in/clinic-app-assets/icons/core-healing-icon-192.png">
 <link rel="icon" type="image/png" sizes="64x64" href="https://www.girishp.in/clinic-app-assets/icons/core-healing-favicon-64.png">
 <link rel="manifest" href="manifest.webmanifest">
 <script>
-  // Launched from the home-screen icon → go straight to the app.
-  // Opened in a normal browser tab → stay, so "Add to Home Screen" saves THIS page (logo + name).
+  // The home-screen icon opens in the normal browser (same Google login as Safari / Chrome).
+  // Opened as .../clinic/?launch=1 (what the icon saves) → go straight to the app.
+  // Opened as .../clinic/ → stay on this page, but quietly switch the address to ?launch=1,
+  // so "Add to Home Screen" saves the launch address and the icon skips this page next time.
   var APP = "https://script.google.com/macros/s/AKfycbxBvJxb3HQCML1NJAHuZJ2DND9cV8RO_iQ9IepfTQVPuJ6v_vKGpRCwwsyyAXat4rIX1w/exec";
-  var launched = window.navigator.standalone === true ||
-    (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ||
-    /[?&]launch=1\b/.test(location.search);
-  if (launched) location.replace(APP);
+  if (/[?&]launch=1\b/.test(location.search)) location.replace(APP);
+  else if (history.replaceState) history.replaceState(null, "", location.pathname + "?launch=1");
 </script>
 <style>
   :root { --bg: #fbf6ea; --ink: #1f2d1c; --muted: #6b6f5e; --accent: #2d5a27; --card: #fffdf7; --line: #ebe3cc; }
@@ -56,7 +54,7 @@
     <h2>Add to Home Screen · Android (Chrome)</h2>
     <ol><li>Tap the <b>⋮</b> menu (top right).</li><li>Choose <b>Add to Home screen</b> (or <b>Install app</b>).</li><li>Tap <b>Add</b>.</li></ol>
   </div>
-  <p class="note">The icon opens the app directly. Sign in with the Google account your clinic added.</p>
+  <p class="note">The icon opens the app directly in your browser, using the Google account you are already signed in with (the one your clinic added).</p>
 </main>
 <script>
   var ua = navigator.userAgent;
